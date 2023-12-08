@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>notice_test_static</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <style>
+
+        ul, li{
+            list-style:none;
+            text-align:center;
+            padding:0;
+            margin:0;
+         }
+
+        #mainWrapper{
+            line-height:2em;
+            width:90%;
+            margin: 0 auto;
+        }
+
+        #mainWrapper > ul > li:first-child {
+            text-align: center;
+            font-size:12pt;
+            height:40px;
+            vertical-align:middle;
+            line-height:30px;
+         }
+
+        #ulTable {
+            margin-top:10px;
+        }
+
+        #ulTable > li:first-child > ul > li {
+            font-weight:bold;
+            text-align:center;
+        }
+
+        #ulTable > li > ul {
+            clear:both;
+            padding:0px auto;
+
+            position:relative;
+         }
+        #ulTable > li > ul > li {
+            float:left;
+            font-size:12pt;
+            border-bottom:1px solid silver;
+
+        }
+
+        #ulTable > li > ul > li:first-child               {width:10%;}
+        #ulTable > li > ul > li:first-child +li           {width:45%;}
+        #ulTable > li > ul > li:first-child +li+li        {width:20%;}
+        #ulTable > li > ul > li:first-child +li+li+li     {width:15%;}
+        #ulTable > li > ul > li:first-child +li+li+li+li{width:10%;}
+
+        #divPaging {
+            clear:both;
+            margin:0 auto;
+            width:220px;
+            height:50px;
+
+        }
+        #divPaging > div {
+            float:left;
+            width: 30px;
+            margin:0 auto;
+            text-align:center;
+
+        }
+        #liSearchOption {
+            clear:both;
+        }
+        #liSearchOption > div {
+            margin:0 auto;
+            margin-top: 30px;
+            width:auto;
+            height:100px;
+        }
+        .board_title {
+            text-align :center;
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="mainWrapper">
+    <ul>
+        <li>
+            <ul id="ulTable">
+                <li>
+                    <ul>
+                        <li>번호</li>
+                        <li>제목</li>
+                        <li>이름</li>
+                        <li>작성일</li>
+                    </ul>
+                </li>
+                <li>
+                    <ul>
+                        <li>1</li>
+                        <li class="board_title">임시글제목</li>
+                        <li>임시작성자temp</li>
+                        <li>2023</li>
+                    </ul>
+                </li>
+
+                <li>
+                    <ul>
+                        <li>1</li>
+                        <li class="board_title">temp임시글제목</li>
+                        <li>임시작성자temp</li>
+                        <li>2023</li>
+                    </ul>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+
+            <div id="divPaging">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+            </div>
+        </li>
+        <li id="liSearchOption">
+            <div>
+                <hr>
+                <label for="searchOption"></label>
+                <select id="searchOption">
+                    <option value="title">제목</option>
+                    <option value="content">내용</option>
+                </select>
+                <label for="keyword"></label>
+                <input id="keyword">
+                <input type='button' value='검색'/>
+                <hr>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>

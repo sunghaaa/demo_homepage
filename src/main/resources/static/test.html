@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <style>
+        .wrap {
+          position: relative;
+        }
+        .wrap_text {
+          color:white;
+          text-align:center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+
+        .category {
+          list-style: none;
+          text-align:center;
+        }
+        .category a{
+           color:black;
+           font-size:20px;
+           text-decoration:none;
+        }
+        .category a:hover{
+            color:#7b00a0;
+        }
+        .notice_li{
+            position:relative;
+            list-style:none;
+            float:left;
+            top:100px;
+            text-align:center;
+            bottom:10px;
+        }
+
+        .div_notice_press li{
+            position:relative;
+            list-style:none;
+            float:left;
+            top:100px;
+
+        }
+
+        .div_notice_press li a{
+            text-decoration:none;
+            text-align:center;
+            color:black;
+            align-items:center;
+        }
+
+        .div_notice_press li a:hover{
+            color:white;
+        }
+
+        .board{
+            list-style:none;
+            float:left;
+            text-align:center;
+        }
+
+        .board{
+            list-style:none;
+
+        }
+
+
+    </style>
+
+
+    <script>
+        function clickButton(){
+            const color =
+        }
+    </script>
+
+    <meta charset="UTF-8">
+    <title>NOTICE_게시판</title>
+</head>
+<body>
+
+<!--공지사항 이미지-->
+<div class="wrap">
+    <div class="wrap_text">
+        <h2>COMMUNITY</h2>
+        <br>
+        좋은 커피와 맛있는 음료를 합리적인 가격에 제공해드리는 우리는 "더벤티"입니다
+    </div>
+    <div class="wrap_image">
+        <img th:src="@{/image/community.jpeg}" src="/static/image/community.jpeg" alt="" style="max-width:100%; height:500px;">
+    </div>
+</div>
+<!--게시판 카테고리-->
+<div class="div_container">
+    <li class="category">
+        <a class="subCategory" id = "notice" href="/notice">공지사항</a>&nbsp;&nbsp;
+        <a class="subCategory" id = "media" href="#">보도자료</a>&nbsp;&nbsp;
+        <a class="subCategory" href="#">이벤트</a>&nbsp;&nbsp;
+        <a class="subCategory" href="#">칭찬매장</a>&nbsp;&nbsp;
+        <a class="subCategory" href="#">더벤티 이야기</a>&nbsp;&nbsp;
+        <a class="subCategory" href="#">SNS</a>&nbsp;&nbsp;
+        <a class="subCategory" href="#">자주하는 질문</a>&nbsp;&nbsp;
+        <a class="subCategory" href="#">벤티럭 사연접수</a>&nbsp;&nbsp;
+        <a class="subCategory" href="#">THEVENGERS 봉사활동</a>
+    </li>
+</div>
+
+<!--공지사항 게시판-->
+<ul class="board">
+    <li class="number">번호</li>
+    <li class="title">제목</li>
+    <li class="name">이름</li>
+    <li class="date">작성일</li>
+</ul>
+<ul class="board">
+    <li class="title">1</li>
+    <li class="title">title</li>
+    <li class="name">tempName</li>
+    <li class="date">date</li>
+</ul>
+<ul class="board">
+    <li class="number">1</li>
+    <li class="title">title</li>
+    <li class="name">tempName</li>
+    <li class="date">date</li>
+</ul>
+
+<ul class="board">
+    <li class="number">1</li>
+    <li class="title">title</li>
+    <li class="name">tempName</li>
+    <li class="date">date</li>
+</ul>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+</body>
+</html>
