@@ -3,21 +3,8 @@ package com.example.demo_homepage.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
-
 @Controller
 public class MainController {
-
-
-    @GetMapping("/notice")
-    public String notice() {
-        return "notice";
-    }
-
-    @GetMapping("/slide")
-    public String slide() {
-        return "slide";
-    }
-
     @GetMapping("/sidebar")
     public String sidebar() {
         return "sidebar";
@@ -33,5 +20,14 @@ public class MainController {
         return "main";
     }
 
+    @GetMapping("/newMember")
+    public String newMemberGet(){
+        return "newMember";
+    }
+
+    @GetMapping("/account")
+    public String selectUser(){
+        return "account";
+    }
 
 }

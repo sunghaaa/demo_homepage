@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <style>
+        .box{
+           height:790px;
+           display:flex;
+           vertical-align:center;
+           display:center;
+
+        }
+       .customerBox{
+           background-color: beige;
+           width: 50%;
+           float: left;
+       }
+       .managerBox{
+           background-color: purple;
+           width: 50%;
+           float: right;
+       }
+       p{
+           top:50%;
+           position:relative;
+           cursor:pointer;
+           text-align:center;
+       }
+    </style>
+    <title>계정 선택 페이지</title>
+</head>
+<body>
+<div class="box">
+    <div class="customerBox" id="customerBox">
+        <p class="customer" onclick="location.href='/login'">개인회원</p>
+    </div>
+
+    <div class="managerBox" id="managerBox">
+        <p class="manager" onclick="location.href='/login'">관리자</p>
+    </div>
+</div>
+
+</body>
+</html>

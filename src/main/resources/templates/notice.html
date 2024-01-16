@@ -29,26 +29,8 @@
         .category a:hover{
             color:#7b00a0;
         }
-        .div_notice_press li{
-            position:relative;
-            list-style:none;
-            float:left;
-            top:100px;
-            left:100%;
-        }
-        .div_notice_press li a{
-            text-decoration:none;
-            text-align:center;
-            color:black;
-        }
-
-        .div_notice_press li a{
-            text-decoration:none;
-            text-align:center;
-            color:black;
-        }
-
         .notice_board_button button{
+            margin-right:-5px;
             position:relative;
             border:none;
             top:50px;
@@ -56,18 +38,15 @@
             height:40px;
             width:270px;
             transform: translate(-50%, -50%);
+            font-size:20px;
         }
         #button_notice{
-            position:relative;
-            font-size:20px;
-            background-color:black;
-            color:white;
-        }
-        #button_press{
-            position:relative;
-            font-size:20px;
             background-color:beige;
             color:black;
+        }
+        #button_press{
+            background-color:black;
+            color:white;
         }
         ul, li{
             list-style:none;
@@ -103,7 +82,6 @@
             font-size:12pt;
             border-bottom:1px solid silver;
         }
-
         #ulBoard > li > ul > li:first-child{
             width:10%;
         }
@@ -119,7 +97,6 @@
         #ulBoard > li > ul > li:first-child +li+li+li+li{
             width:15%;
         }
-
         #divPaging {
             clear:both;
             margin:0 auto;
@@ -141,20 +118,7 @@
             width:auto;
             height:100px;
         }
-        .board_title {
-            text-align :left;
-        }
-        .searchForm{
-            width:10%;
-        }
-
     </style>
-
-
-    <script>
-
-    </script>
-
     <meta charset="UTF-8">
     <title>NOTICE_게시판</title>
 </head>
@@ -167,15 +131,16 @@
         좋은 커피와 맛있는 음료를 합리적인 가격에 제공해드리는 우리는 "더벤티"입니다
     </div>
     <div class="wrap_image">
-        <img th:src="@{/image/community.jpeg}" src="/static/image/community.jpeg" alt="" style="max-width:100%; height:500px;">
+        <img th:src="@{/image/community.jpeg}" src="/static/image/community.jpeg" alt=""
+             style="max-width:100%; height:500px;">
     </div>
 </div>
 
 <!--mainPage_community_카테고리-->
 <div class="div_container">
     <li class="category">
-        <a class="subCategory" id = "notice" href="/notice">공지사항</a>&nbsp;&nbsp;
-        <a class="subCategory" id = "media" href="#">보도자료</a>&nbsp;&nbsp;
+        <a class="subCategory" id="notice" href="/notice">공지사항</a>&nbsp;&nbsp;
+        <a class="subCategory" id="press" href="#">보도자료</a>&nbsp;&nbsp;
         <a class="subCategory" href="#">이벤트</a>&nbsp;&nbsp;
         <a class="subCategory" href="#">칭찬매장</a>&nbsp;&nbsp;
         <a class="subCategory" href="#">더벤티 이야기</a>&nbsp;&nbsp;
@@ -189,18 +154,14 @@
 
 
 <div class="notice_board_button">
-<button class="button" id="button_notice" onclick="location.href='/notice'">
-    <span>공지사항</span>
-<button class="button" id="button_press" onclick="location.href='/press'">
-    <span>보도자료</span>
-</button>
-</button>
+    <button type="button" id="button_notice" onclick="location.href='/notice'">공지사항</button>
+    <button type="button" id="button_press" onclick="location.href='/press'">보도자료</button>
 </div>
 <br>
-<div class="searchForm" style="float:right">
+<div class="searchForm" style="float:right; width:10%;">
     <label>
         <select class="form-select">
-            <option selected>분류</option>
+            <option th:each="category:${searchForm}" th:text="${category.label}">분류</option>
             <option value="1">소식</option>
             <option value="2">출시</option>
             <option value="3">이벤트</option>
@@ -208,13 +169,12 @@
         </select>
     </label>
 </div>
-
+<br>
 <br>
 <br>
 <br>
 <hr>
 <br>
-
 <div id="mainWrapper">
     <ul>
         <li>
@@ -229,45 +189,24 @@
                     </ul>
                 </li>
                 <li>
-                    <ul>
-                        <li>1</li>
-                        <li>소식</li>
-                        <li class="board_title">임시글제목</li>
-                        <li>임시작성자temp</li>
-                        <li>2023.01.01</li>
-                    </ul>
-                </li>
-                <li>
-                    <ul>
-                        <li>1</li>
-                        <li>출시</li>
-                        <li class="board_title">temp임시글제목</li>
-                        <li>임시작성자temp</li>
-                        <li>2023.01.01</li>
-                    </ul>
-                </li>
-                <li>
-                    <ul>
-                        <li>1</li>
-                        <li>이벤트</li>
-                        <li class="board_title">temp임시글제목</li>
-                        <li>임시작성자temp</li>
-                        <li>2023.01.01</li>
-                    </ul>
-                </li>
-                <li>
-                    <ul>
-                        <li>1</li>
-                        <li>발표</li>
-                        <li class="board_title">temp임시글제목</li>
-                        <li>임시작성자temp</li>
-                        <li>2023.01.01</li>
+                    <ul th:each="notice:${noticeList}">
+                        <li th:text="${notice.created_number}"></li>
+                        <li th:text="${notice.category}"></li>
+                        <li class="detail_title">
+                            <a th:href="@{/detailPageView(created_number = ${notice.created_number})}"
+                               style="text-decoration:none; color:inherit">
+                                <span th:text="${notice.detail_title}"></span>
+                            </a>
+                        </li>
+                        <li th:text="${notice.member_id}"></li>
+                        <li th:text="${notice.created_date}"></li>
                     </ul>
                 </li>
             </ul>
         </li>
         <li>
             <div id="divPaging">
+                <br>
                 <div>1</div>
                 <div>2</div>
                 <div>3</div>
@@ -283,9 +222,11 @@
                     <option value="title">제목</option>
                     <option value="content">내용</option>
                 </select>
-                <label for="keyword"></label>
-                <input id="keyword">
-                <input type='button' value='검색'/>
+                <label for="keyword">
+                    <input type="text" id="keyword" style="outline:none; border-width: 0 0 2px">
+                    <button type="button">검색</button>
+                </label>
+                <button type="button" onclick="location.href='/detailPageWrite'" style="float:right">글작성</button>
                 <hr>
             </div>
         </li>

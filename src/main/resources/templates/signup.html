@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <meta charset="UTF-8">
+    <style>
+        div{
+            box-sizing: border-box;
+        }
+        input{
+            border-width: 0 0 2px;
+        }
+        input:focus {
+            outline: none;
+        }
+        .purpleBox{
+            background-color: purple;
+            padding: 30px;
+            width:100%;
+            max-width:650px;
+            margin:auto;
+        }
+       .whiteBox{
+           background-color: white;
+           padding: 30px;
+           width: 80%;
+           max-width: 500px;
+           margin: auto;
+       }
+       button{
+            border:none;
+            background-color:purple;
+            color:white;
+       }
+
+    </style>
+    <title>회원가입 페이지</title>
+</head>
+<body>
+
+<div class="loginBox">
+    <div class="purpleBox">
+        <div class="whiteBox">
+            <form action="/signup" th:object="${memberDto}" method="post" name="signup">
+                <h3>회원가입</h3>
+                <br>
+                <div>
+                    <span>계정</span>
+                    <br>
+                    <input type="radio" id="guest" name="memberType" value="guest" th:field="*{member_type}">
+                    <label for="guest">일반회원</label>
+                    <input type="radio" id="admin" name="memberType" value="admin" th:field="*{member_type}">
+                    <label for="admin">관리자</label>
+                </div>
+                <br>
+                <div class="memberId">
+                    <p>아이디</p>
+                    <label>
+                        <input type="text" th:field="*{member_id}">
+                        <span id="confirmNewId" style="color:red; font-size:11px"></span>
+                        <button type="button" onclick="confirmNewId();">중복확인</button>
+                    </label>
+                </div>
+                <br>
+                <div class="memberPassword">
+                    <p>비밀번호</p>
+                    <label>
+                        <input type="text" th:field="*{member_password}">
+                    </label>
+                </div>
+                <br>
+                <div class="memberEmail">
+                    <p>이메일</p>
+                    <label>
+                        <input type="text" th:field="*{member_email}">
+                    </label>
+                </div>
+                <br>
+                <div class="memberPhoneNumber">
+                    <p>전화번호</p>
+                    <label>
+                        <input type="text" th:field="*{member_phone_number}">
+                    </label>
+                </div>
+                <br>
+                <div class="memberBirthday">
+                    <p>생년월일</p>
+                    <label>
+                        <input type="text" th:field="*{member_birthday}">
+                    </label>
+                </div>
+                <br>
+                <div class="memberAddress">
+                    <p>주소</p>
+                    <label>
+                        <input type="text" id="zipCode" name="zipCode" onclick="findAddress();" readonly="readonly"
+                               th:field="*{zip_code}">
+                        <button type="button" onclick="findAddress();">주소검색</button>
+                    </label>
+                    <label>
+                        <input type="text" id="firstAddress" name="firstAddress" onclick="findAddress();"
+                               readonly="readonly" th:field="*{first_address}">
+                    </label>
+                    <label>
+                        <input type="text" id="secondAddress" name="secondAddress" th:field="*{second_address}">
+                    </label>
+                </div>
+                <br>
+                <div>
+                    <button type="submit" onclick="location.href='/newMember'">회원가입</button>
+                    <button type="button" onclick="location.href='/main'" style="background-color:gray">가입취소</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function findAddress() {
+        autoClose:true;
+        new daum.Postcode({
+            oncomplete: function(data) {
+            var address = '';
+            if (data.userSelectedType === 'R') {
+                address = data.roadAddress;
+            } else {
+                address = data.jibunAddress;
+            }
+
+            $("#zipCode").val(data.zonecode);
+            $("#firstAddress").val(address);
+            $("#secondAddress").val("");
+            $("#secondAddress").focus();
+            }
+
+        }).open();
+    }
+
+    function confirmNewId(){
+        var id = $("#member_id").val();
+        if(id == ''){
+            $("#member_id").focus();
+            alert("아이디를 입력해주세요");
+        }
+    }
+
+    function confirmMember(){
+        var email =$("#memberPassword").val();
+        if(email == ''){
+            $("#memberPassword").focus();
+            alert("비번다시입력");
+        }
+    }
+</script>
+</body>
+</html>
