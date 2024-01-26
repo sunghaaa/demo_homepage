@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title>메인페이지</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
+
     <style>
         .carousel-indicators [data-bs-target]{
            width: 10px;
@@ -19,7 +26,7 @@
            border-radius: 15px;
            background-color: #7b00a0;
         }
-        ul, li {
+        ul, li{
             list-style: none;
             margin: 0;
             padding: 0;
@@ -32,8 +39,15 @@
            background-color: white;
            list-style:none;
            margin-left:5px;
+           text-align:center;
+           z-index:999;
+
         }
-        #topMenu ul li {
+        #topMenu:hover{
+            float:left;
+            background-color:orange;
+        }
+        #topMenu ul li{
             float: left;
             line-height: 30px;
             vertical-align: middle;
@@ -46,14 +60,12 @@
             width: 180px;
             color: black;
             text-align:center;
+            background-color:white;
         }
         .menuLink{
             font-size:20px;
             letter-spacing: 1px;
             font-weight:600;
-        }
-        .topMenuLi:hover{
-            background-color:white;
         }
         .submenu {
             position: absolute;
@@ -61,8 +73,6 @@
             overflow: hidden;
             left: 0;
             display:none;
-            z-index:1;
-            background-color:white;
         }
         .topMenuLi:hover .submenu {
             height: auto;
@@ -73,6 +83,7 @@
             color: #7b00a0;
         }
         .logo img{
+            margin-left:5px;
             height:auto;
             width:190px;
         }
@@ -120,7 +131,9 @@
         }
         .buttonCustomized{
             position:relative;
-            left:400px;
+            left:38%;
+            align-items:center;
+            justify-content:center;
             width:300px;
             bottom:90px;
         }
@@ -128,26 +141,27 @@
             font-size:60px;
             width:380px;
             font-weight:600;
-            display:absolute;
+            display:relative;
             float:left;
         }
         .bestMenu img{
             float:right;
+            margin-top:10px;
         }
         .bestMenuList a{
             left:500px;
-            text-align:center;
             font-size:20px;
             color:black;
             text-decoration:none;
         }
         .bestMenuList a:hover{
+           width:130px;
+           height:20px;
            border-radius: 15px;
            color:white;
            background-color: black;
         }
         .nav{
-            display:relative;
             float:right;
             margin-right:20px;
             margin-top:200px;
@@ -169,7 +183,158 @@
             height:100%;
             color:black;
             text-align:center;
-            display:absolute;
+            display:relative;
+            font-weight:bold;
+        }
+        .special_tea {
+            width: 100%;
+            height: 250px;
+            position: relative;
+            font-size:40px;
+            background-color:chocolate;
+            color:white;
+        }
+        .taste {
+            height: 700px;
+            position: relative;
+            display:flex;
+        }
+        .taste_of_coffee {
+            width: 33.33%;
+            color: white;
+            text-align:center;
+            padding : 50px 0;
+            font-size:18px;
+            font-weight:600;
+        }
+        .order_search{
+            height:300px;
+            position:relative;
+            display:flex;
+            padding: 30px 5px;
+            color:white;
+            font-size:18px;
+        }
+        .order_app{
+            width:50%;
+            background-color : orange;
+            border-radius: 50px 0px 50px 50px;
+            margin:10px;
+            line-height:0px;
+            top:20px;
+        }
+        .order_app img{
+            position:absolute;
+            top:20px;
+            right:30px;
+        }
+        .order_app_circle{
+            margin:30px;
+            text-align:center;
+            line-height:40px;
+            width: 130px;
+            height: 40px;
+            background-color:black;
+            border-radius:50px;
+        }
+        .search_store{
+            width:50%;
+            background-color:purple;
+            border-radius: 0px 50px 50px 50px;
+            margin:10px;
+            line-height:0px;
+            top:20px;
+        }
+        .search_store_input{
+            position:relative;
+            display:inline-block;
+        }
+        input[type=text]{
+            width: 100%;
+            height:40px;
+            font-size:18px;
+            border-radius:50px;
+            border:0;
+            outline:none;
+            margin:30px;
+            margin-top:-0.5px;
+            padding-left:20px;
+            font-weight:400;
+        }
+        input::placeholder{
+            color:black;
+            font-weight:600;
+        }
+        .search_store img{
+            position:absolute;
+            top:20px;
+            right:50px;
+        }
+        .best_menu{
+            display:flex;
+            position:relative;
+            width:100%;
+        }
+        .best_menu_category{
+            margin-top:50px;
+            margin-left:-13%;
+            text-align:center;
+            font-size:18px;
+        }
+        .best_menu_category a{
+            text-decoration:none;
+            color:black;
+            padding:7px;
+            margin-left:20px;
+        }
+        .best_menu_category a:hover{
+            background-color:black;
+            color:white;
+            border-radius:50px;
+        }
+        .the_venti_sns_circle{
+            border-radius: 50% 0% 50% 50%;
+            width:310px;
+            height:310px;
+            overflow:hidden;
+            margin-top:80px;
+            margin-left:13px;
+            border: 3px solid transparent;
+            overflow:hidden;
+        }
+        .the_venti_sns_circle:hover{
+            border: 3px solid purple;
+            border-color:purple;
+        }
+        .swiper-pagination {
+            color:grey;
+            top:5%;
+            left:45%;
+        }
+        .swiper-button {
+            background-color:transparent;
+            border:none;
+            color:#454545;
+            position:absolute;
+            top:8.5%;
+            margin-left:90%;
+        }
+        .swiper-button-prev::after,
+        .swiper-button-next::after {
+          font-size: 15px;
+
+        }
+        .best-menu-button{
+            margin-left:30%;
+        }
+        .swiper-button--prev, .swiper-button--next {
+          width:50px;
+          height:50px;
+          border:none;
+          border-radius:50% 50%;
+          background-color:grey;
+          margin-left:10%;
+          color:white;
         }
     </style>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
@@ -240,124 +405,319 @@
             </ul>
         </nav>
     </div>
+
+    <!--carousel-->
+    <div class="carouselTarget">
+        <div id="carouselTarget" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="0" class="active"
+                        aria-label="slide 0">
+                </button>
+                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="1"
+                        aria-label="slide 1">
+                </button>
+                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="2"
+                        aria-label="slide 2">
+                </button>
+                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="3"
+                        aria-label="slide 3">
+                </button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img th:src="@{/image/main_image_01.jpg}" alt="" src="/static/image/main_image_01.jpg"/>
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{/image/main_image_02.jpg}" alt="" src="/static/image/main_image_02.jpg"/>
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{/image/main_image_03.jpg}" alt="" src="/static/image/main_image_03.jpg"/>
+                </div>
+                <div class="carousel-item">
+                    <img th:src="@{/image/main_image_04.jpg}" alt="" src="/static/image/main_image_04.jpg"/>
+                </div>
+            </div>
+        </div>
+    </div>
 </header>
 <body>
-<!--carousel-->
-<div id="carouselTarget" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="0" class="active"
-                aria-label="slide 0">
-        </button>
-        <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="1"
-                aria-label="slide 1">
-        </button>
-        <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="2"
-                aria-label="slide 2">
-        </button>
-        <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="3"
-                aria-label="slide 3">
-        </button>
+
+<!--앱주문/매장찾기-->
+<div class="order_search">
+    <div class="order_app" data-aos="fade-down" data-aos-duration="1000">
+        <div style="padding-top:30px; margin-left:15px;">
+            <div style="margin:30px; font-size:30px; font-weight:700;">더벤티 앱으로 더욱 풍성하게!</div>
+            <div class="order_app_circle">
+                <a href="#" style="text-decoration:none; color:white;">앱으로 주문</a>
+            </div>
+            <div style="margin-left:50px;">#퀵오더 #이벤트 #혜택쿠폰 #앱다운로드 #앱주문</div>
+        </div>
+        <img src="/static/image/main-icon1.png" alt="" th:src="@{/image/main-icon1.png}">
     </div>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img th:src="@{/image/main_image_01.jpg}" alt="" src="/static/image/main_image_01.jpg"/>
+    <div class="search_store" data-aos="fade-up" data-aos-duration="1000">
+        <div style="margin:30px; padding-top:30px; font-size:30px; font-weight:700;">가까운 더벤티 매장찾기!</div>
+        <div class="search_store_input">
+            <form action="#">
+                <label>
+                    <input type="text" placeholder="검색어를 입력하세요">
+                </label>
+                <button type="submit" style="background-color:transparent; border:0;">
+                    <i class="fa-solid fa-magnifying-glass" style="margin-left:-10px;"></i>
+                </button>
+            </form>
         </div>
-        <div class="carousel-item">
-            <img th:src="@{/image/main_image_02.jpg}" alt="" src="/static/image/main_image_02.jpg"/>
+        <img src="/static/image/main-icon2.png" alt="" th:src="@{/image/main-icon2.png}">
+        <div style="margin-left:50px;">#더벤티 #더벤티 매장찾기</div>
+    </div>
+</div>
+
+<!--best_menu_swiper-->
+<div class="best_menu" data-aos="fade-down" data-aos-duration="1000">
+    <div style="font-size:75px; margin-left:10px; width:50%; font-weight:600;">BEST MENU
+        <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt=""
+             style="margin-bottom:40px; margin-left:-10px;">
+    </div>
+    <div class="best_menu_category">
+        <a href="#">커피</a>
+        <a href="#">디카페인</a>
+        <a href="#">아이스 블렌디드</a>
+        <a href="#">주스/에이드</a>
+        <a href="#">버블티/티</a>
+        <a href="#">베버리지</a>
+        <a href="#">사이드메뉴/RTD</a>
+    </div>
+</div>
+
+
+
+<div class="best-menu">
+    <div class="best-menu-swiper" data-aos="fade-up" data-aos-duration="1500">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!--swiper-slide-->
+                <div class="swiper-slide" >
+                    <img src="/static/image/vanilla.png" alt="" th:src="@{/image/vanilla.png}">
+                </div>
+                <div class="swiper-slide" >
+                    <img src="/static/image/einspanner.png" alt="" th:src="@{/image/einspanner.png}"
+                    >
+                </div>
+                <div class="swiper-slide" >
+                    <img src="/static/image/iceAme.png" alt="" th:src="@{/image/iceAme.png}"
+                    >
+                </div>
+                <div class="swiper-slide" >
+                    <img src="/static/image/caffelatte.png" alt="" th:src="@{/image/caffelatte.png}"
+                    >
+                </div>
+            </div>
         </div>
-        <div class="carousel-item">
-            <img th:src="@{/image/main_image_03.jpg}" alt="" src="/static/image/main_image_03.jpg"/>
-        </div>
-        <div class="carousel-item">
-            <img th:src="@{/image/main_image_04.jpg}" alt="" src="/static/image/main_image_04.jpg"/>
+        <div class="best-menu-button">
+            <button type="button" class=" swiper-button--prev"><i class="fa-solid fa-angle-left"></i></button>
+            <button type="button" class=" swiper-button--next"><i class="fa-solid fa-angle-right"></i></button>
         </div>
     </div>
 </div>
 
 
-<!--best_menu-->
-<div class="bestMenu">
-    <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
-    <p>BEST MENU</p>
+<div class="special_tea">
+    <div class="special_tea_text" data-aos="fade-down" data-aos-duration="1200"
+         style="padding-top:60px; padding-left:10px;">취향에 맞는<br>
+        <span style="font-weight:bold">스페셜티 블렌드
+            <img src="/static/image/v-logo-icon-white.png" th:src="@{/image/v-logo-icon-white.png}" alt=""
+                 style="margin-bottom:30px;"/></span>
+    </div>
+</div>
+
+<!--3가지 맛-->
+<!--마일드로스트-->
+<div class="taste">
+    <div class="taste_of_coffee mild" style="background-color:orange;">
+        <div class="img_mild" style="position:relative">
+            <div style="position:absolute; top:-23px; left:110px;">
+                <img th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
+            </div>
+            <div style="font-weight:bold; font-size:40px;">마일드로스트</div>
+        </div>
+        <div>견과류의 깔끔하고 고소한 맛과 향</div>
+        <div style="width:30%; margin:10px auto; border:0.5px solid; position:relative;"></div>
+        <div>MEDIUM BODY<br>Nutty, Mapple Syrup</div>
+        <br>
+        <img src="/static/image/taste-graph1.png" th:src="@{/image/taste-graph1.png}" alt=""/>
+    </div>
+
+
+    <!--마일드와 다크의 중간 작은 원두 이미지-->
+    <img src="/static/image/special-logo-white.png" alt="" th:src="@{/image/special-logo-white.png}"
+         style="position:absolute; z-index:999; margin-left:400px; margin-top:50px; width:80px; height:100px;">
+
+    <!--다크로스트-->
+    <div class="taste_of_coffee dark" style="background-color:purple;">
+        <div class="img_mild" style="position:relative">
+            <div style="position:absolute; top:-23px; left:110px;">
+                <img th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
+            </div>
+            <div style="font-weight:bold; font-size:40px;">다크로스트</div>
+        </div>
+        <div>다크초콜릿의 깊고 진한 맛과 향</div>
+        <div style="width:30%; margin:10px auto; border:0.5px solid; position:relative;"></div>
+        <div>FULL BODY<br>Dark, Chocolate, Brouwn Sugar</div>
+        <br>
+        <img src="/static/image/taste-graph2.png" th:src="@{/image/taste-graph2.png}" alt=""/>
+    </div>
+
+    <!--디카프-->
+    <div class="taste_of_coffee decaffeine" style="background-color:green">
+        <div style="font-weight:bold; font-size:40px;">디카프로스트</div>
+        <p>카페인을 낮춘 깔끔한 맛과 향</p>
+        <div style="width:30%; margin:10px auto; border:0.5px solid; position:relative;"></div>
+        <p>Decaffeine BODY<br>Walnut, Cacao</p>
+        <br>
+        <img src="/static/image/taste-graph3.png" th:src="@{/image/taste-graph3.png}" alt=""/>
+    </div>
 </div>
 <br>
-<div class="container">
-    <div class="bestMenuList">
-        <a href="#">커피</a>&nbsp;&nbsp;
-        <a href="#">디카페인</a>&nbsp;&nbsp;
-        <a href="#">아이스 블렌디드</a>&nbsp;&nbsp;
-        <a href="#">주스/에이드</a>&nbsp;&nbsp;
-        <a href="#">버블티/티</a>&nbsp;&nbsp;
-        <a href="#">베버리지</a>&nbsp;&nbsp;
-        <a href="#">사이드메뉴/RTD</a>
-        <!--best_menu_coffee_carousel-->
-        <div class="coffee">
-            <div id="carouselCoffee" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/static/image/caffelatte.png" class="carousel-inner-img" alt=""
-                             th:src="@{/image/caffelatte.png}"/>
-                        <br><span>카페라떼</span>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/static/image/iceAme.png" class="carousel-inner-img" alt=""
-                             th:src="@{/image/iceAme.png}"/>
-                        <br><span>아이스 아메리카노</span>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/static/image/einspanner.png" class="carousel-inner-img" alt=""
-                             th:src="@{/image/einspanner.png}"/>
-                        <br><span>아인슈페너</span>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/static/image/vanilla.png" class="carousel-inner-img" alt=""
-                             th:src="@{/image/vanilla.png}"/>
-                        <br><span>바닐라딥라떼</span>
-                    </div>
+<br>
+<!--the_venti_sns_swiper-->
+<div data-aos="fade-down" data-aos-duration="1000">
+    <div style="font-size:75px; margin-top:50px; margin-left:10px; font-weight:600;">THEVENTI SNS
+        <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt=""
+             style="margin-bottom:40px; margin-left:-10px;">
+    </div>
+</div>
+
+
+<div class="theVenti-sns">
+    <div class="sns-swiper" data-aos="fade-up" data-aos-duration="1500">
+        <div class="swiper-container">
+            <div class="swiper-paging-button">
+                <div class="swiper-pagination"></div>
+                <button type="button" class="swiper-button swiper-button-prev"></button>
+                <button type="button" class="swiper-button swiper-button-next"></button>
+            </div>
+            <div class="swiper-wrapper">
+                <!--swiper-slide-->
+                <div class="swiper-slide" style="display:flex;">
+                    <a href="#" class="the_venti_sns_circle">
+                        <img src="/static/image/berry-02.png" alt="" th:src="@{/image/berry-02.png}"
+                             style="width:100%; height:100%; object-fit:cover;">
+                        <span>
+                        <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}"
+                             style="position:absolute; border-radius:50%; background-color:white; z-index:100; margin-left:-170px; margin-top:280px;">
+                        </span>
+                    </a>
                 </div>
-                <div class="buttonCustomized">
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCoffee"
-                            data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselCoffee"
-                            data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+
+                <div class="swiper-slide" style="display:flex;">
+                    <a href="#" class="the_venti_sns_circle">
+                        <img src="/static/image/berry-01.jpg" alt="" th:src="@{/image/berry-01.jpg}"
+                             style="width:100%; height:100%; object-fit:cover;">
+                        <span>
+                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}"
+                                 style="position:absolute; border-radius:50%; background-color:white; z-index:100; margin-left:-170px; margin-top:280px;">
+                        </span>
+                    </a>
                 </div>
+
+                <div class="swiper-slide" style="display:flex;">
+                    <a href="#" class="the_venti_sns_circle">
+                        <img src="/static/image/diary.jpg" alt="" th:src="@{/image/diary.jpg}"
+                             style="width:100%; height:100%; object-fit:cover;">
+                        <span>
+                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}"
+                                 style="position:absolute; border-radius:50%; background-color:white; z-index:100; margin-left:-170px; margin-top:280px;">
+                        </span>
+                    </a>
+                </div>
+
+                <div class="swiper-slide" style="display:flex;">
+                    <a href="#" class="the_venti_sns_circle">
+                        <img src="/static/image/tumbler.jpg" alt="" th:src="@{/image/tumbler.jpg}"
+                             style="width:100%; height:100%; object-fit:cover;">
+                        <span>
+                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}"
+                                 style="position:absolute; border-radius:50%; background-color:white; z-index:100; margin-left:-170px; margin-top:280px;">
+                        </span>
+                    </a>
+                </div>
+
             </div>
         </div>
     </div>
 </div>
 
+
 <!--nav_right_side-->
-<nav class="nav">
-    <ul class="sidebar">
-        <li>
-            <div class="circle">가맹문의<br>
-                <div style="font-size:14px">1661-4553</div>
-            </div>
-        </li>
-        <li>
-            <div class="circle">가맹상담<br>
-                <img th:src="@{/image/consulting.png}" style="width:20px; height:20px"
-                     src="/static/image/consulting.png" alt="">
-            </div>
-        </li>
-        <li>
-            <div class="circle">고객상담<br>1644-0513</div>
-        </li>
-        <li>
-            <div class="circle" style="background-color:#7b00a0">
-                <img th:src="@{/image/quick_event.png}" style="width:20px; height:20px"
-                     src="/static/image/quick_event.png" alt="">
-                <div style="word-break:keep-all">벤티럭 사연접수</div>
-            </div>
-        </li>
-    </ul>
-</nav>
+<div>
+    <nav class="nav">
+        <ul class="sidebar">
+            <li>
+                <div class="circle">가맹문의<br>
+                    <div style="font-size:14px">1661-4553</div>
+                </div>
+            </li>
+            <li>
+                <div class="circle">가맹상담<br>
+                    <img th:src="@{/image/consulting.png}" style="width:20px; height:20px"
+                         src="/static/image/consulting.png" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="circle">고객상담<br>1644-0513</div>
+            </li>
+            <li>
+                <div class="circle" style="background-color:#7b00a0">
+                    <img th:src="@{/image/quick_event.png}" style="width:20px; height:20px"
+                         src="/static/image/quick_event.png" alt="">
+                    <div style="word-break:keep-all">벤티럭 사연접수</div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<script>
+
+    const bestMenuSwiper = new Swiper('.best-menu-swiper .swiper-container', {
+        loop: true,
+        slidesPerView:5,
+        centeredSlides:true,
+        spaceBetween:30,
+        clickable:true,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+        navigation:{
+            nextEl: '.best-menu-swiper .swiper-button--next',
+            prevEl: '.best-menu-swiper .swiper-button--prev',
+        },
+    });
+
+    const snsSwiper = new Swiper('.sns-swiper .swiper-container', {
+        loop:true,
+        slidesPerView:4,
+        autoHeight:true,
+        clickable:true,
+            autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+            spaceBetween:30,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            type: "fraction",
+        },
+        navigation:{
+            nextEl: '.sns-swiper .swiper-button-next',
+            prevEl: '.sns-swiper .swiper-button-prev',
+        },
+    });
+
+AOS.init();
+
+</script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
