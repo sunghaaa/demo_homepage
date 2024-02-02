@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>메인페이지</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8.0.1/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8.0.1/swiper-bundle.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
 
     <style>
+        .nav{
+            float:right;
+            position:sticky;
+            top:0;
+        }
+        .header{
+            position:sticky;
+            top:0;
+        }
         .carousel-indicators [data-bs-target]{
            width: 10px;
            height: 10px;
@@ -34,21 +42,16 @@
         #topMenu{
            padding-top:20px;
            height: 70px;
-           width: auto;
+           width: 100%;
            position: relative;
            background-color: white;
            list-style:none;
            margin-left:5px;
            text-align:center;
            z-index:999;
-
-        }
-        #topMenu:hover{
-            float:left;
-            background-color:orange;
         }
         #topMenu ul li{
-            float: left;
+            float:left;
             line-height: 30px;
             vertical-align: middle;
             text-align: center;
@@ -106,12 +109,6 @@
         .symbol:hover{
             background-color:black;
         }
-        .symbol img{
-            height:30px;
-            width:30px;
-            bottom:3px;
-            position:relative;
-        }
         #carouselTarget img{
             width:100%;
         }
@@ -161,11 +158,6 @@
            color:white;
            background-color: black;
         }
-        .nav{
-            float:right;
-            margin-right:20px;
-            margin-top:200px;
-        }
         .circle{
             border-radius:100%;
             background-color:black;
@@ -178,14 +170,6 @@
             line-height:26px;
             margin-top:10px;
         }
-        .coffee{
-            width:auto;
-            height:100%;
-            color:black;
-            text-align:center;
-            display:relative;
-            font-weight:bold;
-        }
         .special_tea {
             width: 100%;
             height: 250px;
@@ -193,19 +177,73 @@
             font-size:40px;
             background-color:chocolate;
             color:white;
+            padding-top:60px;
+            padding-left:10px;
+        }
+        .special_tea_span{
+            font-weight:bold;
+        }
+        .special_tea img{
+            margin-bottom:30px;
         }
         .taste {
             height: 700px;
             position: relative;
             display:flex;
         }
-        .taste_of_coffee {
+        .taste_of_coffee_mild{
             width: 33.33%;
             color: white;
             text-align:center;
             padding : 50px 0;
             font-size:18px;
-            font-weight:600;
+            font-weight:500;
+            background-color:orange;
+        }
+        .coffee_content{
+            position:relative;
+            font-size:40px;
+            font-weight:bold;
+        }
+        .coffee_content img{
+            position:absolute;
+            top:-23px;
+            left:111px;
+        }
+        .coffee_line{
+            width:30%;
+            margin:10px auto;
+            border:0.5px solid;
+            position:relative;
+        }
+        #special-logo{
+            position:absolute;
+            z-index:999;
+            margin-left:410px;
+            margin-top:50px;
+            width:80px;
+            height:100px;
+        }
+        .taste_of_coffee_dark{
+            width: 33.33%;
+            color: white;
+            text-align:center;
+            padding : 50px 0;
+            font-size:18px;
+            font-weight:500;
+            background-color:purple;
+        }
+        #dark_image{
+            left:29%;
+        }
+        .taste_of_coffee_decaffeine{
+            width: 33.33%;
+            color: white;
+            text-align:center;
+            padding : 50px 0;
+            font-size:18px;
+            font-weight:500;
+            background-color:green;
         }
         .order_search{
             height:300px;
@@ -221,7 +259,15 @@
             border-radius: 50px 0px 50px 50px;
             margin:10px;
             line-height:0px;
-            top:20px;
+        }
+        .order_app_content{
+            padding-top:30px;
+            margin-left:15px;
+        }
+        .order_title{
+            margin:30px;
+            font-size:30px;
+            font-weight:700;
         }
         .order_app img{
             position:absolute;
@@ -237,6 +283,13 @@
             background-color:black;
             border-radius:50px;
         }
+        .order_app_circle a{
+            text-decoration:none;
+            color:white;
+        }
+        .order_app_hashtag, .search_store_hashtag{
+            margin-left:7%;
+        }
         .search_store{
             width:50%;
             background-color:purple;
@@ -244,6 +297,12 @@
             margin:10px;
             line-height:0px;
             top:20px;
+        }
+        .search_title{
+            margin:30px;
+            padding-top:30px;
+            font-size:30px;
+            font-weight:700;
         }
         .search_store_input{
             position:relative;
@@ -265,6 +324,12 @@
             color:black;
             font-weight:600;
         }
+        .search_button{
+            background-color:transparent;
+            color:grey;
+            border:0;
+            margin-left:-7%;
+        }
         .search_store img{
             position:absolute;
             top:20px;
@@ -274,6 +339,22 @@
             display:flex;
             position:relative;
             width:100%;
+        }
+        .best_menu_title{
+            font-size:75px;
+            margin-left:10px;
+            width:50%;
+            font-weight:600;
+        }
+        .sns_title{
+            font-size:75px;
+            font-weight:600;
+            margin-left:10px;
+            width:100%;
+        }
+        .best_menu_title img, .sns_title img{
+            margin-bottom:40px;
+            margin-left:-10px;
         }
         .best_menu_category{
             margin-top:50px;
@@ -306,6 +387,19 @@
             border: 3px solid purple;
             border-color:purple;
         }
+        .the_venti_sns_circle img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+        .sns_insta{
+            position:absolute;
+            border-radius:50%;
+            background-color:white;
+            z-index:100;
+            margin-left:-170px;
+            margin-top:280px;
+        }
         .swiper-pagination {
             color:grey;
             top:5%;
@@ -314,40 +408,171 @@
         .swiper-button {
             background-color:transparent;
             border:none;
-            color:#454545;
+            color:black;
             position:absolute;
             top:8.5%;
             margin-left:90%;
         }
-        .swiper-button-prev::after,
-        .swiper-button-next::after {
-          font-size: 15px;
-
+        .swiper-button-prev::after, .swiper-button-next::after {
+            font-size: 15px;
         }
         .best-menu-button{
+            left:30%;
+        }
+        .best-menu-button-next, .best-menu-button-prev {
+            width:50px;
+            height:50px;
+            border:none;
+            border-radius:50% 50%;
+            background-color:#D3D3D3;
+            margin-left:40%;
+            color:white;
+        }
+        .award-container{
+            display:flex;
+            margin-left:0.5%;
+        }
+        .award-list{
+            display:flex;
+            align-items:center;
+            width:100%;
+        }
+        .award-list img{
+            width:35%;
+            height:55%;
+            display:flex;
+        }
+        .award-detail{
+            width:auto;
+            display:flex;
+            position:absolute;
+            font-size:14px;
+            color:grey;
+            margin-left:4%;
+            padding-right:10%;
+        }
+        #award-list-customer{
+            width:37%;
+            height:90%;
+        }
+        #award-customer-select{
+            width:40%;
+            height:30%;
+        }
+        .footer{
+            width:100%;
+            color:white;
+            font-size:18px;
+            margin-top:10%;
+        }
+        .footer a{
+            text-decoration:none;
+            color:white;
+        }
+        .footer-first{
+            display:flex;
+            position:relative;
+            background-color:purple;
+            padding:4%;
+            margin-left:-15.5%;
+            padding-bottom:5%;
+        }
+        .footer-logo img{
+            width:20%;
+        }
+        .footer-category{
+            display:flex;
+            position:absolute;
             margin-left:30%;
+            top:45%;
         }
-        .swiper-button--prev, .swiper-button--next {
-          width:50px;
-          height:50px;
-          border:none;
-          border-radius:50% 50%;
-          background-color:grey;
-          margin-left:10%;
-          color:white;
+        .footer-category a{
+            margin-right:20px;
         }
+        .footer-sns{
+            position:absolute;
+            right:0.5%;
+            top:31%;
+        }
+        .footer-line{
+            width:100%;
+            border:0.5px solid;
+        }
+        .footer-second{
+            display:flex;
+            position:relative;
+            background-color:purple;
+            margin-left:-15.5%;
+            padding-bottom:11.5%;
+        }
+        .footer-contact-tel{
+            margin-top:7%;
+        }
+        .footer-contact-tel a{
+            color:orange;
+            font-size:27px;
+            font-weight:bold;
+        }
+        .footer-address{
+            margin-left:42%;
+            margin-top:-9%;
+            color:grey;
+        }
+        .footer-busan, .footer-seoul{
+            color:white;
+        }
+        .busan-detail, .seoul-detail{
+            margin-left:4%;
+        }
+        .footer-company-number, .footer-company-people{
+            margin-left:2%;
+        }
+        .busan-detail, .seoul-detail, .footer-company, .footer-copyright, .footer-copyright a{
+            color:grey;
+        }
+        .footer-intro{
+            height:120%;
+            margin-left:107.6%;
+            top:-10%;
+            margin-top:-8%;
+            font-weight:bold;
+        }
+        .footer-intro a{
+            font-size:18px;
+            color:white;
+            background-color:orange;
+            height:20%;
+            width:8%;
+            border-radius:50px;
+            position:absolute;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        .footer-intro a:hover{
+            background-color:brown;
+        }
+        .masstige{
+            font-weight:bold;
+        }
+        .sns-slide{
+            display:flex;
+        }
+
     </style>
     <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 </head>
+
+<body>
+
 <header>
     <div class="navbar navbar-default navbar-fixed-top">
         <nav id="topMenu">
             <ul>
                 <li class="topMenuLi">
                     <div class="logo">
-                        <a href="/main"><img th:src="@{/image/theVentiLogo.png}"
-                                             alt=""
+                        <a href="/main"><img th:src="@{/image/theVentiLogo.png}" alt=""
                                              src="/static/image/theVentiLogo.png"></a>
                     </div>
                 </li>
@@ -397,85 +622,82 @@
                 <li class="topMenuLi">
                     <a class="menuLink" href="/main">
                         <div class="symbol">프랜차이즈&nbsp;
-                            <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt=""
-                                 style="width:23px; height:23px;">
+                            <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
                         </div>
                     </a>
                 </li>
             </ul>
         </nav>
     </div>
+</header>
 
-    <!--carousel-->
-    <div class="carouselTarget">
-        <div id="carouselTarget" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="0" class="active"
-                        aria-label="slide 0">
-                </button>
-                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="1"
-                        aria-label="slide 1">
-                </button>
-                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="2"
-                        aria-label="slide 2">
-                </button>
-                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="3"
-                        aria-label="slide 3">
-                </button>
+<!--carousel-->
+<div class="carouselTarget">
+    <div id="carouselTarget" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="0" class="active"
+                    aria-label="slide 0">
+            </button>
+            <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="1"
+                    aria-label="slide 1">
+            </button>
+            <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="2"
+                    aria-label="slide 2">
+            </button>
+            <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="3"
+                    aria-label="slide 3">
+            </button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img th:src="@{/image/main_image_01.jpg}" alt="" src="/static/image/main_image_01.jpg"/>
             </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img th:src="@{/image/main_image_01.jpg}" alt="" src="/static/image/main_image_01.jpg"/>
-                </div>
-                <div class="carousel-item">
-                    <img th:src="@{/image/main_image_02.jpg}" alt="" src="/static/image/main_image_02.jpg"/>
-                </div>
-                <div class="carousel-item">
-                    <img th:src="@{/image/main_image_03.jpg}" alt="" src="/static/image/main_image_03.jpg"/>
-                </div>
-                <div class="carousel-item">
-                    <img th:src="@{/image/main_image_04.jpg}" alt="" src="/static/image/main_image_04.jpg"/>
-                </div>
+            <div class="carousel-item">
+                <img th:src="@{/image/main_image_02.jpg}" alt="" src="/static/image/main_image_02.jpg"/>
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{/image/main_image_03.jpg}" alt="" src="/static/image/main_image_03.jpg"/>
+            </div>
+            <div class="carousel-item">
+                <img th:src="@{/image/main_image_04.jpg}" alt="" src="/static/image/main_image_04.jpg"/>
             </div>
         </div>
     </div>
-</header>
-<body>
+</div><!--carousel-->
 
 <!--앱주문/매장찾기-->
 <div class="order_search">
     <div class="order_app" data-aos="fade-down" data-aos-duration="1000">
-        <div style="padding-top:30px; margin-left:15px;">
-            <div style="margin:30px; font-size:30px; font-weight:700;">더벤티 앱으로 더욱 풍성하게!</div>
+        <div class="order_app_content">
+            <div class="order_title">더벤티 앱으로 더욱 풍성하게!</div>
             <div class="order_app_circle">
-                <a href="#" style="text-decoration:none; color:white;">앱으로 주문</a>
+                <a href="#">앱으로 주문</a>
             </div>
-            <div style="margin-left:50px;">#퀵오더 #이벤트 #혜택쿠폰 #앱다운로드 #앱주문</div>
+            <div class="order_app_hashtag">#퀵오더 #이벤트 #혜택쿠폰 #앱다운로드 #앱주문</div>
         </div>
         <img src="/static/image/main-icon1.png" alt="" th:src="@{/image/main-icon1.png}">
     </div>
     <div class="search_store" data-aos="fade-up" data-aos-duration="1000">
-        <div style="margin:30px; padding-top:30px; font-size:30px; font-weight:700;">가까운 더벤티 매장찾기!</div>
+        <div class="search_title">가까운 더벤티 매장찾기!</div>
         <div class="search_store_input">
             <form action="#">
                 <label>
                     <input type="text" placeholder="검색어를 입력하세요">
                 </label>
-                <button type="submit" style="background-color:transparent; border:0;">
-                    <i class="fa-solid fa-magnifying-glass" style="margin-left:-10px;"></i>
+                <button type="submit" class="search_button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
             </form>
         </div>
         <img src="/static/image/main-icon2.png" alt="" th:src="@{/image/main-icon2.png}">
-        <div style="margin-left:50px;">#더벤티 #더벤티 매장찾기</div>
+        <div class="search_store_hashtag">#더벤티 #더벤티 매장찾기</div>
     </div>
 </div>
 
 <!--best_menu_swiper-->
 <div class="best_menu" data-aos="fade-down" data-aos-duration="1000">
-    <div style="font-size:75px; margin-left:10px; width:50%; font-weight:600;">BEST MENU
-        <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt=""
-             style="margin-bottom:40px; margin-left:-10px;">
+    <div class="best_menu_title">BEST MENU
+        <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
     </div>
     <div class="best_menu_category">
         <a href="#">커피</a>
@@ -488,108 +710,107 @@
     </div>
 </div>
 
-
-
 <div class="best-menu">
     <div class="best-menu-swiper" data-aos="fade-up" data-aos-duration="1500">
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <!--swiper-slide-->
-                <div class="swiper-slide" >
-                    <img src="/static/image/vanilla.png" alt="" th:src="@{/image/vanilla.png}">
+                <!--카페라떼 바닐라딥라떼 아인슈페너 아메리카노-->
+                <div class="swiper-slide">
+                    <div class="best-menu-detail">
+                        <img src="/static/image/caffelatte.png" alt="" th:src="@{/image/caffelatte.png}">
+                        <div>카페라떼</div>
+                    </div>
                 </div>
-                <div class="swiper-slide" >
-                    <img src="/static/image/einspanner.png" alt="" th:src="@{/image/einspanner.png}"
-                    >
+                <div class="swiper-slide">
+                    <div class="best-menu-detail">
+                        <img src="/static/image/vanilla.png" alt="" th:src="@{/image/vanilla.png}">
+                        <div>바닐라딥라떼</div>
+                    </div>
                 </div>
-                <div class="swiper-slide" >
-                    <img src="/static/image/iceAme.png" alt="" th:src="@{/image/iceAme.png}"
-                    >
+                <div class="swiper-slide">
+                    <div class="best-menu-detail">
+                        <img src="/static/image/einspanner.png" alt="" th:src="@{/image/einspanner.png}">
+                        <div>아인슈페너</div>
+                    </div>
                 </div>
-                <div class="swiper-slide" >
-                    <img src="/static/image/caffelatte.png" alt="" th:src="@{/image/caffelatte.png}"
-                    >
+                <div class="swiper-slide">
+                    <div class="best-menu-detail">
+                        <img src="/static/image/iceAme.png" alt="" th:src="@{/image/iceAme.png}">
+                        <div>아이스 아메리카노</div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="best-menu-button">
-            <button type="button" class=" swiper-button--prev"><i class="fa-solid fa-angle-left"></i></button>
-            <button type="button" class=" swiper-button--next"><i class="fa-solid fa-angle-right"></i></button>
+            <button type="button" class="swiper-button best-menu-button-prev"><i class="fa-solid fa-angle-left"></i>
+            </button>
+            <button type="button" class="swiper-button best-menu-button-next"><i class="fa-solid fa-angle-right"></i>
+            </button>
         </div>
     </div>
 </div>
 
-
 <div class="special_tea">
-    <div class="special_tea_text" data-aos="fade-down" data-aos-duration="1200"
-         style="padding-top:60px; padding-left:10px;">취향에 맞는<br>
-        <span style="font-weight:bold">스페셜티 블렌드
-            <img src="/static/image/v-logo-icon-white.png" th:src="@{/image/v-logo-icon-white.png}" alt=""
-                 style="margin-bottom:30px;"/></span>
+    <div data-aos="fade-down" data-aos-duration="1200">취향에 맞는<br>
+        <span class="special_tea_span">스페셜티 블렌드
+            <img src="/static/image/v-logo-icon-white.png" th:src="@{/image/v-logo-icon-white.png}" alt="">
+        </span>
     </div>
 </div>
 
 <!--3가지 맛-->
-<!--마일드로스트-->
 <div class="taste">
-    <div class="taste_of_coffee mild" style="background-color:orange;">
-        <div class="img_mild" style="position:relative">
-            <div style="position:absolute; top:-23px; left:110px;">
-                <img th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
-            </div>
-            <div style="font-weight:bold; font-size:40px;">마일드로스트</div>
+    <div class="taste_of_coffee_mild">
+        <div class="coffee_content">
+            <img th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
+            <div>마일드로스트</div>
         </div>
         <div>견과류의 깔끔하고 고소한 맛과 향</div>
-        <div style="width:30%; margin:10px auto; border:0.5px solid; position:relative;"></div>
+        <div class="coffee_line"></div>
         <div>MEDIUM BODY<br>Nutty, Mapple Syrup</div>
         <br>
         <img src="/static/image/taste-graph1.png" th:src="@{/image/taste-graph1.png}" alt=""/>
     </div>
 
-
     <!--마일드와 다크의 중간 작은 원두 이미지-->
-    <img src="/static/image/special-logo-white.png" alt="" th:src="@{/image/special-logo-white.png}"
-         style="position:absolute; z-index:999; margin-left:400px; margin-top:50px; width:80px; height:100px;">
+    <img id="special-logo" src="/static/image/special-logo-white.png" alt="" th:src="@{/image/special-logo-white.png}">
 
-    <!--다크로스트-->
-    <div class="taste_of_coffee dark" style="background-color:purple;">
-        <div class="img_mild" style="position:relative">
-            <div style="position:absolute; top:-23px; left:110px;">
-                <img th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
-            </div>
-            <div style="font-weight:bold; font-size:40px;">다크로스트</div>
+    <div class="taste_of_coffee_dark">
+        <div class="coffee_content">
+            <img id="dark_image" th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
+            <div>다크로스트</div>
         </div>
         <div>다크초콜릿의 깊고 진한 맛과 향</div>
-        <div style="width:30%; margin:10px auto; border:0.5px solid; position:relative;"></div>
+        <div class="coffee_line"></div>
         <div>FULL BODY<br>Dark, Chocolate, Brouwn Sugar</div>
         <br>
         <img src="/static/image/taste-graph2.png" th:src="@{/image/taste-graph2.png}" alt=""/>
     </div>
 
-    <!--디카프-->
-    <div class="taste_of_coffee decaffeine" style="background-color:green">
-        <div style="font-weight:bold; font-size:40px;">디카프로스트</div>
-        <p>카페인을 낮춘 깔끔한 맛과 향</p>
-        <div style="width:30%; margin:10px auto; border:0.5px solid; position:relative;"></div>
-        <p>Decaffeine BODY<br>Walnut, Cacao</p>
+    <div class="taste_of_coffee_decaffeine">
+        <div class="coffee_content">
+            <div>디카프로스트</div>
+        </div>
+        <div>카페인을 낮춘 깔끔한 맛과 향</div>
+        <div class="coffee_line"></div>
+        <div>Decaffeine BODY<br>Walnut, Cacao</div>
         <br>
         <img src="/static/image/taste-graph3.png" th:src="@{/image/taste-graph3.png}" alt=""/>
     </div>
-</div>
+</div><!--taste--세가지 맛 나눈거-->
 <br>
 <br>
 <!--the_venti_sns_swiper-->
 <div data-aos="fade-down" data-aos-duration="1000">
-    <div style="font-size:75px; margin-top:50px; margin-left:10px; font-weight:600;">THEVENTI SNS
-        <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt=""
-             style="margin-bottom:40px; margin-left:-10px;">
+    <div class="sns_title">THEVENTI SNS
+        <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
     </div>
 </div>
 
-
-<div class="theVenti-sns">
+<div class="the-venti-sns">
     <div class="sns-swiper" data-aos="fade-up" data-aos-duration="1500">
-        <div class="swiper-container">
+        <div class="swiper-container" style="width:100%;">
             <div class="swiper-paging-button">
                 <div class="swiper-pagination"></div>
                 <button type="button" class="swiper-button swiper-button-prev"></button>
@@ -597,101 +818,226 @@
             </div>
             <div class="swiper-wrapper">
                 <!--swiper-slide-->
-                <div class="swiper-slide" style="display:flex;">
+                <div class="swiper-slide sns-slide">
                     <a href="#" class="the_venti_sns_circle">
-                        <img src="/static/image/berry-02.png" alt="" th:src="@{/image/berry-02.png}"
-                             style="width:100%; height:100%; object-fit:cover;">
-                        <span>
-                        <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}"
-                             style="position:absolute; border-radius:50%; background-color:white; z-index:100; margin-left:-170px; margin-top:280px;">
+                        <img src="/static/image/berry-02.png" alt="" th:src="@{/image/berry-02.png}">
+                        <span class="sns_insta">
+                        <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
                         </span>
                     </a>
                 </div>
-
-                <div class="swiper-slide" style="display:flex;">
+                <div class="swiper-slide sns-slide">
                     <a href="#" class="the_venti_sns_circle">
-                        <img src="/static/image/berry-01.jpg" alt="" th:src="@{/image/berry-01.jpg}"
-                             style="width:100%; height:100%; object-fit:cover;">
-                        <span>
-                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}"
-                                 style="position:absolute; border-radius:50%; background-color:white; z-index:100; margin-left:-170px; margin-top:280px;">
+                        <img src="/static/image/berry-01.jpg" alt="" th:src="@{/image/berry-01.jpg}">
+                        <span class="sns_insta">
+                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
                         </span>
                     </a>
                 </div>
-
-                <div class="swiper-slide" style="display:flex;">
+                <div class="swiper-slide sns-slide">
                     <a href="#" class="the_venti_sns_circle">
-                        <img src="/static/image/diary.jpg" alt="" th:src="@{/image/diary.jpg}"
-                             style="width:100%; height:100%; object-fit:cover;">
-                        <span>
-                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}"
-                                 style="position:absolute; border-radius:50%; background-color:white; z-index:100; margin-left:-170px; margin-top:280px;">
+                        <img src="/static/image/diary.jpg" alt="" th:src="@{/image/diary.jpg}">
+                        <span class="sns_insta">
+                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
                         </span>
                     </a>
                 </div>
-
-                <div class="swiper-slide" style="display:flex;">
+                <div class="swiper-slide sns-slide">
                     <a href="#" class="the_venti_sns_circle">
-                        <img src="/static/image/tumbler.jpg" alt="" th:src="@{/image/tumbler.jpg}"
-                             style="width:100%; height:100%; object-fit:cover;">
-                        <span>
-                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}"
-                                 style="position:absolute; border-radius:50%; background-color:white; z-index:100; margin-left:-170px; margin-top:280px;">
+                        <img src="/static/image/tumbler.jpg" alt="" th:src="@{/image/tumbler.jpg}">
+                        <span class="sns_insta">
+                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
                         </span>
                     </a>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
+<br>
+<br>
+
+<div class="award">
+    <div class="award-container" id="award-list">
+        <div class="award-list">
+            <img src="/static/image/cart111.png" alt="" th:src="@{/image/cart111.png}">
+            <div class="award-detail">
+                제 24회 한국프랜차이즈<br>우수 프랜차이즈 부문<br>협회장 표창
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img id="award-list-customer" src="/static/image/cart01.png" alt="" th:src="@{/image/cart01.png}">
+            <div class="award-detail">
+                국가소비자중심<br>브랜드대상
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img src="/static/image/cart02.png" alt="" th:src="@{/image/cart02.png}">
+            <div class="award-detail">
+                소비자가<br>신뢰하는<br>착한브랜드<br>대상
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img src="/static/image/cart03.png" alt="" th:src="@{/image/cart03.png}">
+            <div class="award-detail">
+                한국소비자포럼<br>&BrandKey<br>고객충성도대상
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img src="/static/image/cart04.png" alt="" th:src="@{/image/cart04.png}">
+            <div class="award-detail">
+                대한민국<br>퍼스트브랜드<br>대상
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img src="/static/image/cart05.png" alt="" th:src="@{/image/cart05.png}">
+            <div class="award-detail">
+                고객사랑<br>브랜드<br>대상
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img id="award-customer-select" src="/static/image/cart06.png" alt="" th:src="@{/image/cart06.png}">
+            <div class="award-detail">
+                소비자가뽑은<br>서비스 고객만족<br>대상
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img src="/static/image/cart07.png" alt="" th:src="@{/image/cart07.png}">
+            <div class="award-detail">
+                한국브랜드<br>만족지수<br>1위
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img src="/static/image/cart08.png" alt="" th:src="@{/image/cart08.png}">
+            <div class="award-detail">
+                한국프랜차이즈<br>산업통상자원부장관<br>표창
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img src="/static/image/cart10.png" alt="" th:src="@{/image/cart10.png}">
+            <div class="award-detail">
+                한국프랜차이즈<br>국무총리<br>표창
+            </div>
+        </div>
+
+        <div class="award-list">
+            <img src="/static/image/cart11.png" alt="" th:src="@{/image/cart11.png}">
+            <div class="award-detail">
+                2023<br>국가산업대상
+            </div>
+        </div>
+    </div><!--award-container  slick-->
+</div><!--award-->
+
+<!--footer-->
+<footer id="footer" class="footer">
+    <div class="footer-first">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="/static/image/the-venti-footer-logo.png" alt=""
+                     th:src="@{/image/the-venti-footer-logo.png}">
+            </div>
+            <div class="footer-category">
+                <a href="#">더벤티 소개</a>
+                <a href="#">고객상담</a>
+                <a href="#">개인정보 처리방침</a>
+                <a href="#">이용약관</a>
+            </div>
+            <div class="footer-sns">
+                <a href="#"><img src="/static/image/f_youtube.png" alt="" th:src="@{/image/f_youtube.png}"></a>
+                <a href="#"><img src="/static/image/f_insta.png" alt="" th:src="@{/image/f_insta.png}"></a>
+                <a href="#"><img src="/static/image/f_facebook.png" alt="" th:src="@{/image/f_facebook.png}"></a>
+                <a href="#"><img src="/static/image/f_blog.png" alt="" th:src="@{/image/f_blog.png}"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-line"></div>
+    <div class="footer-second">
+        <div class="container">
+            <div class="footer-contact-tel">
+                <div>가맹문의 <a href="#">1661-4553</a></div>
+                <div>고객센터 <a href="#">1644-0513</a></div>
+            </div>
+            <div class="footer-address">
+                <div class="footer-busan">더벤티 부산&교육센터<span
+                        class="busan-detail">부산광역시 해운대구 센텀서로 30, 2507호(KNN타워)</span>
+                </div>
+                <div class="footer-seoul">더벤티 서울&교육센터<span class="seoul-detail">서울특별시 구로구 디지털로33길 27 408~414호</span>
+                </div>
+                <div class="footer-company">
+                    <span>(주)에스앤씨세인</span>
+                    <span class="footer-company-number">사업자번호 : 534-88-00122</span>
+                    <span class="footer-company-people">대표이사 : 박수암 강삼남 최준경</span>
+                </div>
+                <br>
+                <div class="footer-copyright">
+                    Copyright &copy; THEVENTI. All right Reserved.
+                    <a href="#">Created By&nbsp;<span class="masstige">Masstige.</span></a>
+                </div>
+            </div>
+            <div class="footer-intro">
+                <a href="#">인트로&nbsp;
+                    <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
 
 
 <!--nav_right_side-->
-<div>
-    <nav class="nav">
-        <ul class="sidebar">
-            <li>
-                <div class="circle">가맹문의<br>
-                    <div style="font-size:14px">1661-4553</div>
-                </div>
-            </li>
-            <li>
-                <div class="circle">가맹상담<br>
-                    <img th:src="@{/image/consulting.png}" style="width:20px; height:20px"
-                         src="/static/image/consulting.png" alt="">
-                </div>
-            </li>
-            <li>
-                <div class="circle">고객상담<br>1644-0513</div>
-            </li>
-            <li>
-                <div class="circle" style="background-color:#7b00a0">
-                    <img th:src="@{/image/quick_event.png}" style="width:20px; height:20px"
-                         src="/static/image/quick_event.png" alt="">
-                    <div style="word-break:keep-all">벤티럭 사연접수</div>
-                </div>
-            </li>
-        </ul>
-    </nav>
-</div>
+<nav class="nav">
+    <ul class="sidebar">
+        <li>
+            <div class="circle">가맹문의<br>
+                <div style="font-size:14px">1661-4553</div>
+            </div>
+        </li>
+        <li>
+            <div class="circle">가맹상담<br>
+                <img th:src="@{/image/consulting.png}" style="width:20px; height:20px"
+                     src="/static/image/consulting.png" alt="">
+            </div>
+        </li>
+        <li>
+            <div class="circle">고객상담<br>1644-0513</div>
+        </li>
+        <li>
+            <div class="circle" style="background-color:#7b00a0">
+                <img th:src="@{/image/quick_event.png}" style="width:20px; height:20px"
+                     src="/static/image/quick_event.png" alt="">
+                <div style="word-break:keep-all">벤티럭 사연접수</div>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+
 
 
 <script>
-
     const bestMenuSwiper = new Swiper('.best-menu-swiper .swiper-container', {
         loop: true,
         slidesPerView:5,
-        centeredSlides:true,
         spaceBetween:30,
         clickable:true,
         autoplay: {
             delay: 3000,
             disableOnInteraction: false,
+            spaceBetween:20,
         },
         navigation:{
-            nextEl: '.best-menu-swiper .swiper-button--next',
-            prevEl: '.best-menu-swiper .swiper-button--prev',
+            nextEl: '.best-menu-swiper .best-menu-button-next',
+            prevEl: '.best-menu-swiper .best-menu-button-prev',
         },
     });
 
@@ -714,14 +1060,16 @@
             prevEl: '.sns-swiper .swiper-button-prev',
         },
     });
-
-AOS.init();
-
+    AOS.init();
 </script>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 </body>
+
 </html>
