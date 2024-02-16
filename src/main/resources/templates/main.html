@@ -5,13 +5,14 @@
     <title>메인페이지</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8.0.1/swiper-bundle.min.css"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/mainStyle.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
     <script src="https://cdn.jsdelivr.net/npm/swiper@8.0.1/swiper-bundle.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </head>
 
 <body>
+
 <header>
     <div class="topMenuList">
         <div id="topMenu">
@@ -66,19 +67,45 @@
                     </ul>
                 </li>
                 <li class="topMenuLi">
-                    <a class="menuLink" href="/main">
-                        <div class="symbol">프랜차이즈&nbsp;
-                            <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
-                        </div>
+                    <a class="symbol" href="/main">프랜차이즈&nbsp;
+                        <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
                     </a>
                 </li>
             </ul>
-        </div>
+        </div><!--topMenu-->
     </div>
 </header>
+
+<div class="circle_menu">
+    <ul>
+        <li>
+            <div class="circle">가맹문의
+                <p class="circle_tel">1661-4553</p>
+            </div>
+        </li>
+        <li>
+            <div class="circle">가맹상담<br>
+                <img id="circle_franchise" th:src="@{/image/consulting.png}" src="/static/image/consulting.png" alt="">
+            </div>
+        </li>
+        <li>
+            <div class="circle">고객상담
+                <p class="circle_tel">1644-0513</p>
+            </div>
+        </li>
+        <li>
+            <div class="circle_event">
+                <img id="circle_event_img" th:src="@{/image/quick_event.png}" src="/static/image/quick_event.png"
+                     alt="">
+                <p>벤티럭<br>사연접수</p>
+            </div>
+        </li>
+    </ul>
+</div>
+
 <!--carousel-->
-<section class="carouselMain">
-    <div class="carouselTarget">
+<section class="carouselMainImage">
+    <div class="carouselMainTargetImage">
         <div id="carouselTarget" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="0" class="active"
@@ -144,8 +171,8 @@
 </section>
 
 <!--best_menu_title-->
-<section class="best-menu-section">
-    <div class="best_menu_first" data-aos="fade-down" data-aos-duration="1000">
+<section class="best-menu-section" data-aos="fade-down" data-aos-duration="1000">
+    <div class="best_menu_first">
         <div class="best_menu_title">BEST MENU
             <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
         </div>
@@ -158,10 +185,9 @@
             <a href="#">베버리지</a>
             <a href="#">사이드메뉴/RTD</a>
         </div>
-    </div><!--best_menu_first__title-->
-    <br>
-    <!--best-menu-swiper-->
-    <div class="best-menu-second" data-aos="fade-down" data-aos-duration="1000">
+    </div><!--best_menu_first_title-->
+
+    <div class="best-menu-second">
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <!--swiper-slide-->
@@ -169,7 +195,8 @@
                 <div class="swiper-slide">
                     <div class="best-menu-detail">
                         <img src="/static/image/caffelatte.png" alt="" th:src="@{/image/caffelatte.png}">
-                        <div>카페라떼</div>
+                        <div class="detail-main">카페라떼</div>
+                        <span class="coffee-detail"></span>
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -191,10 +218,10 @@
                     </div>
                 </div>
             </div><!--swiper-wrapper-->
-        </div>
+        </div><!--swiper-container-->
         <button type="button" class="best-menu-button-prev"><i class="fa-solid fa-angle-left"></i></button>
         <button type="button" class="best-menu-button-next"><i class="fa-solid fa-angle-right"></i></button>
-    </div><!--best-memu-swiper-->
+    </div><!--best-memu-second-->
 </section>
 
 <section class="special_tea_section">
@@ -215,8 +242,7 @@
             </div>
             <div>견과류의 깔끔하고 고소한 맛과 향</div>
             <div class="coffee_line"></div>
-            <div>MEDIUM BODY<br>Nutty, Mapple Syrup</div>
-            <br>
+            <div class="coffee_taste">MEDIUM BODY<br>Nutty, Mapple Syrup</div>
             <img src="/static/image/taste-graph1.png" th:src="@{/image/taste-graph1.png}" alt=""/>
         </div>
 
@@ -231,8 +257,7 @@
             </div>
             <div>다크초콜릿의 깊고 진한 맛과 향</div>
             <div class="coffee_line"></div>
-            <div>FULL BODY<br>Dark, Chocolate, Brouwn Sugar</div>
-            <br>
+            <div class="coffee_taste">FULL BODY<br>Dark, Chocolate, Brouwn Sugar</div>
             <img src="/static/image/taste-graph2.png" th:src="@{/image/taste-graph2.png}" alt=""/>
         </div>
 
@@ -242,18 +267,15 @@
             </div>
             <div>카페인을 낮춘 깔끔한 맛과 향</div>
             <div class="coffee_line"></div>
-            <div>Decaffeine BODY<br>Walnut, Cacao</div>
-            <br>
+            <div class="coffee_taste">Decaffeine BODY<br>Walnut, Cacao</div>
             <img src="/static/image/taste-graph3.png" th:src="@{/image/taste-graph3.png}" alt=""/>
         </div>
     </div><!--taste--세가지 맛 나눈거-->
 </section>
-<br>
-<br>
 
 <!--the_venti_sns_swiper-->
 <section class="sns-section">
-    <div data-aos="fade-down" data-aos-duration="1000">
+    <div class="sns-class" data-aos="fade-down" data-aos-duration="1000">
         <div class="sns_title">THEVENTI SNS
             <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
         </div>
@@ -273,47 +295,43 @@
                         <a href="#" class="the_venti_sns_circle">
                             <img src="/static/image/berry-02.png" alt="" th:src="@{/image/berry-02.png}">
                             <span class="sns_insta">
-                        <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
-                        </span>
+                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
+                            </span>
                         </a>
                     </div>
                     <div class="swiper-slide sns-slide">
                         <a href="#" class="the_venti_sns_circle">
                             <img src="/static/image/berry-01.jpg" alt="" th:src="@{/image/berry-01.jpg}">
                             <span class="sns_insta">
-                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
-                        </span>
+                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
+                            </span>
                         </a>
                     </div>
                     <div class="swiper-slide sns-slide">
                         <a href="#" class="the_venti_sns_circle">
                             <img src="/static/image/diary.jpg" alt="" th:src="@{/image/diary.jpg}">
                             <span class="sns_insta">
-                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
-                        </span>
+                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
+                            </span>
                         </a>
                     </div>
                     <div class="swiper-slide sns-slide">
                         <a href="#" class="the_venti_sns_circle">
                             <img src="/static/image/tumbler.jpg" alt="" th:src="@{/image/tumbler.jpg}">
                             <span class="sns_insta">
-                            <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
-                        </span>
+                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
+                            </span>
                         </a>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                </div><!--swiper-wrapper-->
+            </div><!--swiper-container-->
+        </div><!--sns-swiper-->
+    </div><!--the-venti-sns-->
 </section>
-<br>
-<br>
-<br>
-<br>
 
 <section class="award-section">
-    <div class="award">
-        <div class="award-container" id="award-list">
+    <div class="awardMain">
+        <div class="award-container">
             <div class="award-list">
                 <img src="/static/image/cart111.png" alt="" th:src="@{/image/cart111.png}">
                 <div class="award-detail">
@@ -390,37 +408,10 @@
                     2023<br>국가산업대상
                 </div>
             </div>
-        </div><!--award-container slick-->
-    </div><!--award-->
+        </div><!--award-container-->
+    </div><!--award_main-->
 </section>
 
-
-<div class="circle_menu">
-    <ul>
-        <li>
-            <div class="circle">가맹문의
-                <p class="circle_tel">1661-4553</p>
-            </div>
-        </li>
-        <li>
-            <div class="circle">가맹상담<br>
-                <img id="circle_franchise" th:src="@{/image/consulting.png}" src="/static/image/consulting.png" alt="">
-            </div>
-        </li>
-        <li>
-            <div class="circle">고객상담
-                <p class="circle_tel">1644-0513</p>
-            </div>
-        </li>
-        <li>
-            <div class="circle_event">
-                <img id="circle_event_img" th:src="@{/image/quick_event.png}" src="/static/image/quick_event.png"
-                     alt="">
-                <p>벤티럭<br>사연접수</p>
-            </div>
-        </li>
-    </ul>
-</div>
 
 <!--footer-->
 <footer id="footer" class="footer">
@@ -462,7 +453,6 @@
                     <span class="footer-company-number">사업자번호 : 534-88-00122</span>
                     <span class="footer-company-people">대표이사 : 박수암 강삼남 최준경</span>
                 </div>
-                <br>
                 <div class="footer-copyright">
                     Copyright &copy; THEVENTI. All right Reserved.
                     <a href="#">Created By&nbsp;<span class="masstige">Masstige.</span></a>
@@ -482,7 +472,6 @@
         loop: true,
         slidesPerView:5,
         autoHeight:true,
-        centeredSlides: true,
         clickable:true,
             autoplay: {
             delay: 3000,

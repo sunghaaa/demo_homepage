@@ -1,19 +1,16 @@
-package com.example.demo_homepage.domain.entity;
+package com.example.demo_homepage.entity;
 
+import com.example.demo_homepage.dto.NoticeDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDate;
 
+@Data
 @Entity
-@Getter
 @NoArgsConstructor
-@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "notice")
 public class NoticeEntity {
@@ -40,7 +37,8 @@ public class NoticeEntity {
     private LocalDate created_date;
 
     @Builder
-    public NoticeEntity(String detail_title, String member_id, String detail_content, String category, LocalDate created_date) {
+    public NoticeEntity(Long created_number, String detail_title, String member_id, String detail_content, String category, LocalDate created_date) {
+        this.created_number = created_number;
         this.detail_title = detail_title;
         this.member_id = member_id;
         this.detail_content = detail_content;
@@ -48,4 +46,14 @@ public class NoticeEntity {
         this.created_date = created_date;
     }
 
+    public NoticeDto toDto() {
+        return NoticeDto.builder()
+                .created_number(created_number)
+                .detail_title(detail_title)
+                .member_id(member_id)
+                .detail_content(detail_content)
+                .category(category)
+                .created_date(created_date)
+                .build();
+    }
 }

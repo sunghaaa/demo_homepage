@@ -1,52 +1,50 @@
 package com.example.demo_homepage.controller;
 
-import com.example.demo_homepage.category.NoticeCategory;
-import com.example.demo_homepage.domain.entity.NoticeEntity;
 import com.example.demo_homepage.dto.NoticeDto;
 import com.example.demo_homepage.repository.NoticeRepository;
+import com.example.demo_homepage.service.NoticeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class NoticeController {
 
-    public NoticeRepository noticeRepository;
+    private final NoticeRepository noticeRepository;
+    private final NoticeService noticeService;
 
-    public NoticeController(NoticeRepository noticeRepository) {
+    private NoticeController(NoticeRepository noticeRepository, NoticeService noticeService) {
+        this.noticeService = noticeService;
         this.noticeRepository = noticeRepository;
     }
 
     @GetMapping("/notice")
-    public String findNoticeList(Model model) {
-        model.addAttribute("noticeList", noticeRepository.findAll());
+    public String noticeList(Model model) {
+        List<NoticeDto> noticeList = noticeService.findAllDesc();
+        model.addAttribute("noticeList", noticeList);
         return "notice";
     }
 
     @GetMapping("/detailPageWrite")
-    public String detailPageWrite(Model model) {
-        model.addAttribute("noticeEntity", new NoticeDto());
+    public String populateList(Model model) {
+        List<String> categories = new ArrayList<>();
+        categories.add("소식");
+        categories.add("뉴스");
+        categories.add("이벤트");
+        categories.add("발표");
+        model.addAttribute("noticeDto", new NoticeDto());
+        model.addAttribute("category", categories);
         return "detailPageWrite";
-    }
 
-    @ModelAttribute("category")
-    public NoticeCategory[] noticeCategories() {
-        return NoticeCategory.values();
     }
 
     @PostMapping("/detailPageWrite")
-    public String detailPagePost(Model model, @ModelAttribute NoticeEntity noticeEntity) {
-        model.addAttribute("noticeEntity", noticeEntity);
-        noticeRepository.save(noticeEntity);
+    public String detailPagePost(NoticeDto noticeDto) {
+        noticeService.saveNoticePost(noticeDto);
         return "redirect:/notice";
-    }
-
-    @ModelAttribute("category")
-    public String test(Model model, @ModelAttribute NoticeEntity noticeEntity) {
-        model.addAttribute("noticeEntity", noticeEntity);
-        noticeRepository.save(noticeEntity);
-        return "redirect:/notice";
-
     }
 
     @GetMapping("/detailPageView")
@@ -54,12 +52,5 @@ public class NoticeController {
         model.addAttribute("detailPageView", noticeRepository.findById(created_number).orElse(null));
         System.out.println(created_number + "::::상세페이지_글번호");
         return "detailPageView";
-    }
-
-    @GetMapping("/deleteDetailPage")
-    public String deletePage(@ModelAttribute NoticeEntity noticeEntity, Model model) {
-        model.addAttribute("noticeEntity", noticeEntity);
-        noticeRepository.delete(noticeEntity);
-        return "redirect:/notice";
     }
 }

@@ -2,15 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/noticeStyle.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/notice.css}">
     <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <title>NOTICE_게시판</title>
 </head>
 <body>
+
 <header>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <nav id="topMenu">
+    <div class="topMenuList">
+        <div id="topMenu">
             <ul>
                 <li class="topMenuLi">
                     <div class="logo">
@@ -62,18 +63,18 @@
                     </ul>
                 </li>
                 <li class="topMenuLi">
-                    <div class="symbol" onclick="location.href='/main'">프랜차이즈&nbsp;
-                        <img src="/static/image/logo-icon.png" alt="" th:src="@{/image/logo-icon.png}">
-                    </div>
+                    <a class="symbol" href="/main">프랜차이즈&nbsp;
+                        <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
+                    </a>
                 </li>
             </ul>
-        </nav>
+        </div>
     </div>
 </header>
+
 <div class="wrap">
     <div class="wrap_text">
-        <h1 class="font-size:50px;">COMMUNITY</h1>
-        <br>
+        <h1>COMMUNITY</h1>
         좋은 커피와 맛있는 음료를 합리적인 가격에 제공해드리는 우리는 "더벤티"입니다
     </div>
     <div class="wrap_image">
@@ -97,14 +98,13 @@
     <hr class="notice_hr">
 </div>
 
-
 <div class="notice_board_button">
     <button type="button" id="button_notice" onclick="location.href='/notice'">공지사항</button>
     <button type="button" id="button_press" onclick="location.href='/press'">보도자료</button>
 </div>
 
 <div class="selectForm">
-    <form method="post">
+    <form method="get">
         <label>
             <select class="select-category">
                 <option value="0">분류</option>
@@ -116,7 +116,7 @@
         </label>
     </form>
 </div>
-<br>
+
 <div id="noticeBoard">
     <div id="noticeBoard_hr"></div>
     <ul>
@@ -146,27 +146,24 @@
                 </li>
             </ul>
         </li><!--noticeBoardList-->
+
         <li>
             <div id="divPaging">
-                <br>
-                <br>
-                <div><a href="#"><i class="fa fa-angle-double-left" style="color:silver;"></i></a></div>
+                <div><a href="#"><i class="fa fa-angle-double-left"></i></a></div>
                 <div>1</div>
                 <div>2</div>
                 <div>3</div>
                 <div>4</div>
                 <div>5</div>
-                <div><a href="#"><i class="fa fa-angle-double-right" style="color:silver;"></i></a></div>
+                <div><a href="#"><i class="fa fa-angle-double-right"></i></a></div>
             </div>
         </li>
     </ul>
-    <br>
+
 </div><!--noticeBoard-->
 
-<br>
-<br>
-<div class="searchForm_div"></div>
-<br>
+<div class="searchForm-line"></div>
+
 <div class="searchForm">
     <form method="post">
         <label>
@@ -177,11 +174,14 @@
             <input type="text" class="search-text" value="">
             <input type="button" class="search-button" value="검색">
         </label>
+        <button type="button" class="post-button" onclick="location.href='/detailPageWrite'">글작성</button>
     </form>
-</div>
-<br>
-<div class="searchForm_div"></div>
-<br>
+</div><!--searchForm-->
+
+<div class="searchForm-line"></div>
+
+
+<!--footer-->
 <footer id="footer" class="footer">
     <div class="footer-first">
         <div class="container">
@@ -221,7 +221,7 @@
                     <span class="footer-company-number">사업자번호 : 534-88-00122</span>
                     <span class="footer-company-people">대표이사 : 박수암 강삼남 최준경</span>
                 </div>
-                <br>
+
                 <div class="footer-copyright">
                     Copyright &copy; THEVENTI. All right Reserved.
                     <a href="#">Created By&nbsp; <span class="masstige">Masstige.</span></a>

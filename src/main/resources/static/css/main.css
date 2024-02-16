@@ -2,7 +2,6 @@ header{
     position:sticky;
     top:0;
     z-index:999;
-    background-color:white;
 }
 
 .carousel-indicators [data-bs-target]{
@@ -25,24 +24,22 @@ ul, li{
     list-style: none;
     margin: 0;
     padding: 0;
+    text-align:center;
 }
 
 #topMenu{
+    padding-left:1%;
     padding-top:25px;
     height: 80px;
     width: 100%;
     position: relative;
     background-color: white;
-    margin-left:5px;
-    text-align:center;
     z-index:999;
 }
 
 #topMenu ul li{
     float:left;
     line-height: 30px;
-    vertical-align: middle;
-    text-align: center;
     position: relative;
 }
 
@@ -51,26 +48,24 @@ ul, li{
     display: block;
     width: 180px;
     color: black;
-    text-align:center;
     background-color:white;
+    margin-left:30%;
 }
 
 .menuLink{
     font-size:20px;
     letter-spacing: 1px;
     font-weight:600;
+    padding-bottom:10%;
 }
 
 .submenu {
     position: absolute;
-    overflow: hidden;
     display:none;
 }
 
 .topMenuLi:hover .submenu {
-    height: auto;
     display:block;
-    background-color:white;
 }
 
 .menuLink:hover, .submenuLink:hover {
@@ -84,17 +79,17 @@ ul, li{
 }
 
 .symbol{
+    text-decoration:none;
     letter-spacing: 1px;
     font-size:18px;
     color:white;
-    left:60px;
-    right:60px;
-    bottom:10px;
+    margin-top:-6%;
+    margin-left: 70%;
+    bottom:1%;
     height:47px;
     width:150px;
     border-radius:50px;
     background-color: #7b00a0;
-    position:relative;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -111,9 +106,11 @@ ul, li{
 .circle_menu{
     float:right;
     position:sticky;
+    z-index:900;
     top:0;
-    z-index:999;
-
+    padding-top:17%;
+    margin-top:-100%;
+    margin-right: 0.5%;
 }
 
 .circle{
@@ -129,11 +126,15 @@ ul, li{
     padding-top:16px;
 }
 
+.circle:hover{
+    background-color: #7b00a0;
+}
+
 .circle_tel{
-    font-size:14px;
     padding-left:10px;
-    font-size:18px;
+    font-size:17px;
     white-space:nowrap;
+    overflow: hidden ;
 }
 
 #circle_franchise{
@@ -212,6 +213,10 @@ ul, li{
     margin:10px auto;
     border:0.5px solid;
     position:relative;
+}
+
+.coffee_taste{
+    padding-bottom: 10%;
 }
 
 #special-logo{
@@ -367,30 +372,22 @@ input::placeholder{
     font-weight:600;
 }
 
-.sns_title{
-    font-size:75px;
-    font-weight:600;
-    margin-left:10px;
-    width:100%;
-}
-
 .best_menu_title img, .sns_title img{
     margin-bottom:40px;
     margin-left:-10px;
 }
 
 .best_menu_category{
-    margin-top:50px;
-    margin-left:-13%;
+    margin-top:4%;
+    margin-left:-3%;
     text-align:center;
-    font-size:18px;
+    font-size:19px;
 }
 
 .best_menu_category a{
     text-decoration:none;
     color:black;
     padding:7px;
-    margin-left:20px;
 }
 
 .best_menu_category a:hover{
@@ -401,7 +398,9 @@ input::placeholder{
 
 .best-menu-second{
     width:100%;
+    margin-top:3%;
     margin-bottom:10%;
+    overflow:hidden;
 }
 
 .best-menu-detail{
@@ -423,6 +422,23 @@ input::placeholder{
     top:-120px;
 }
 
+.sns_title{
+    font-size:75px;
+    font-weight:600;
+    padding-left:1%;
+    width: 100%;
+    margin-top:10%;
+}
+
+.the-venti-sns{
+    padding-bottom:15%;
+    overflow:hidden;
+}
+
+.sns-slide{
+    display:flex;
+}
+
 .the_venti_sns_circle{
     border-radius: 50% 0% 50% 50%;
     width:310px;
@@ -431,7 +447,6 @@ input::placeholder{
     margin-top:80px;
     margin-left:13px;
     border: 3px solid transparent;
-    overflow:hidden;
 }
 
 .the_venti_sns_circle:hover{
@@ -457,7 +472,9 @@ input::placeholder{
 .swiper-pagination {
     color:grey;
     top:5%;
-    left:45%;
+    left: 91.5%;
+    width:100px;
+    height: 1%;
 }
 
 .swiper-button {
@@ -471,34 +488,37 @@ input::placeholder{
 
 .swiper-button-prev::after, .swiper-button-next::after {
     font-size: 15px;
-
 }
 
 .award-container{
     display:flex;
     margin-left:0.5%;
+    margin-bottom:7%;
+    width:100%;
+    overflow:hidden;
 }
 
 .award-list{
     display:flex;
     align-items:center;
     width:100%;
+    position: relative;
+    animation: scroll-animation 5s linear infinite;
+    /*scroll-animation 5s linear infinite;*/
 }
 
 .award-list img{
     width:35%;
     height:55%;
-    display:flex;
 }
 
 .award-detail{
-    width:auto;
     display:flex;
     position:absolute;
     font-size:14px;
     color:grey;
-    margin-left:4%;
-    padding-right:10%;
+    margin-left:40%;
+    width: 400px;
 }
 
 #award-list-customer{
@@ -515,7 +535,6 @@ input::placeholder{
     width:100%;
     color:white;
     font-size:18px;
-    margin-top:10%;
 }
 
 .footer a{
@@ -539,7 +558,7 @@ input::placeholder{
 .footer-category{
     display:flex;
     position:absolute;
-    margin-left:29.7%;
+    margin-left:29.5%;
     top:45%;
 }
 
@@ -577,7 +596,7 @@ input::placeholder{
 }
 
 .footer-address{
-    margin-left:40%;
+    margin-left:41.5%;
     margin-top:-9%;
     color:grey;
 }
@@ -598,14 +617,17 @@ input::placeholder{
     color:grey;
 }
 
+.footer-copyright{
+    margin-top:3%;
+}
+
 .footer-copyright a:hover{
     color:orange;
 }
 
 .footer-intro{
     height:120%;
-    margin-left:106%;
-    top:-10%;
+    margin-left:108.5%;
     margin-top:-8%;
     font-weight:bold;
 }
@@ -631,6 +653,11 @@ input::placeholder{
     font-weight:bold;
 }
 
-.sns-slide{
-    display:flex;
+@keyframes scroll-animation{
+  0%{
+    left: 0;
+  }
+  100%{
+    left: -400px;
+  }
 }

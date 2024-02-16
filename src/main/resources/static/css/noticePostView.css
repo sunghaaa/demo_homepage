@@ -1,0 +1,54 @@
+.purpleBox{
+    background-color: purple;
+    padding: 30px;
+    width:100%;
+    max-width:650px;
+    margin:auto;
+}
+
+.whiteBox{
+   background-color: white;
+   padding: 30px;
+   width: 80%;
+   max-width: 500px;
+   margin: auto;
+}
+
+h3{
+    text-align:center;
+    color:purple;
+}
+
+#detail_title{
+    margin-top:20%;
+}
+
+input{
+    outline:none;
+    width:410px;
+    border:solid lightgrey;
+    margin-bottom: 3%;
+    border-width:0 0 1px;
+}
+
+textarea{
+    outline:none;
+    resize:none;
+    border-color: lightgrey;
+    margin:5% 0%;
+}
+
+button{
+    background-color:purple;
+    color:white;
+    border:none;
+}
+
+#delete-button{
+    background-color:grey;
+}
+
+#list-button{
+    float: right;
+    background-color: orange ;
+}
