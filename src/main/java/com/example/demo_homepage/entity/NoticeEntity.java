@@ -18,42 +18,43 @@ public class NoticeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "created_number", nullable = false)
-    private Long created_number;
+    private Long createdNumber;
 
     @Column(name = "detail_title", nullable = false)
-    private String detail_title;
+    private String detailTitle;
 
     @Column(name = "member_id", nullable = false)
-    private String member_id;
+    private String memberId;
 
     @Column(name = "detail_content", nullable = false)
-    private String detail_content;
+    private String detailContent;
 
     @Column(name = "category", nullable = false)
     private String category;
 
     @CreatedDate
     @Column(name = "created_date", nullable = false)
-    private LocalDate created_date;
+    private LocalDate createdDate;
+
 
     @Builder
-    public NoticeEntity(Long created_number, String detail_title, String member_id, String detail_content, String category, LocalDate created_date) {
-        this.created_number = created_number;
-        this.detail_title = detail_title;
-        this.member_id = member_id;
-        this.detail_content = detail_content;
+    public NoticeEntity(Long createdNumber, String detailTitle, String memberId, String detailContent, String category, LocalDate createdDate) {
+        this.createdNumber = createdNumber;
+        this.detailTitle = detailTitle;
+        this.memberId = memberId;
+        this.detailContent = detailContent;
         this.category = category;
-        this.created_date = created_date;
+        this.createdDate = createdDate;
     }
 
     public NoticeDto toDto() {
         return NoticeDto.builder()
-                .created_number(created_number)
-                .detail_title(detail_title)
-                .member_id(member_id)
-                .detail_content(detail_content)
+                .createdNumber(createdNumber)
+                .detailTitle(detailTitle)
+                .memberId(memberId)
+                .detailContent(detailContent)
                 .category(category)
-                .created_date(created_date)
+                .createdDate(createdDate)
                 .build();
     }
 }

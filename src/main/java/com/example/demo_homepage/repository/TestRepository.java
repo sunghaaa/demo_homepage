@@ -1,6 +1,6 @@
 package com.example.demo_homepage.repository;
 
-import com.example.demo_homepage.domain.entity.TestEntity;
+import com.example.demo_homepage.entity.TestEntity;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;

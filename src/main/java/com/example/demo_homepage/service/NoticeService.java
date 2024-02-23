@@ -5,8 +5,8 @@ import com.example.demo_homepage.entity.NoticeEntity;
 import com.example.demo_homepage.repository.NoticeRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class NoticeService {
@@ -16,18 +16,34 @@ public class NoticeService {
         this.noticeRepository = noticeRepository;
     }
 
-    public void saveNoticePost(NoticeDto noticeDto){
+    public void saveNoticePost(NoticeDto noticeDto) {
         noticeRepository.save(noticeDto.toEntity());
     }
 
     public List<NoticeDto> findAllDesc() {
         List<NoticeEntity> noticeEntities = noticeRepository.findAllDesc();
-        List<NoticeDto> noticeDtos = new ArrayList<>();
-
-        for (NoticeEntity noticeEntity : noticeEntities) {
-            noticeDtos.add(noticeEntity.toDto());
-        }
+        List<NoticeDto> noticeDtos = noticeEntities.stream()
+                .map(NoticeEntity::toDto)
+                .collect(Collectors.toList());
 
         return noticeDtos;
     }
+
+    public NoticeDto findById(Long createdNumber) {
+        NoticeEntity noticeEntity = noticeRepository.findById(createdNumber).get();
+
+        return NoticeDto.builder()
+                .createdNumber(noticeEntity.getCreatedNumber())
+                .memberId(noticeEntity.getMemberId())
+                .detailTitle(noticeEntity.getDetailTitle())
+                .detailContent(noticeEntity.getDetailContent())
+                .category(noticeEntity.getCategory())
+                .createdDate(noticeEntity.getCreatedDate())
+                .build();
+    }
+
+    public void deleteNoticePost(Long createdNumber) {
+        noticeRepository.deleteById(createdNumber);
+    }
+
 }

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/notice.css}">
-    <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <title>NOTICE_게시판</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/detailPage.css}">
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.1.0/classic/translations/ko.js"></script>
+
+    <title>edit_page</title>
 </head>
+
 <body>
 
 <header>
@@ -73,140 +76,31 @@
     </div>
 </header>
 
+<label for="editor" class="content-area">
+    <form th:action="@{'/detailPageView/edit/' + ${noticeDto.createdNumber}}" method="post" th:object="${noticeDto}">
+        <span th:value="${noticeDto.createdNumber}" hidden="hidden"></span>
 
-<div class="circle_menu">
-    <ul>
-        <li>
-            <div class="circle">가맹문의
-                <p class="circle_tel">1661-4553</p>
-            </div>
-        </li>
-        <li>
-            <div class="circle">가맹상담<br>
-                <img id="circle_franchise" th:src="@{/image/consulting.png}" src="/static/image/consulting.png" alt="">
-            </div>
-        </li>
-        <li>
-            <div class="circle">고객상담
-                <p class="circle_tel">1644-0513</p>
-            </div>
-        </li>
-        <li>
-            <div class="circle_event">
-                <img id="circle_event_img" th:src="@{/image/quick_event.png}" src="/static/image/quick_event.png"
-                     alt="">
-                <p>벤티럭<br>사연접수</p>
-            </div>
-        </li>
-    </ul>
-</div>
+        <label for="detailTitle">제목</label>
+        <input type="text" id="detailTitle" th:value="${noticeDto.detailTitle}" autocomplete="off">
 
-<div class="wrap">
-    <div class="wrap_text">
-        <h1>COMMUNITY</h1>
-        좋은 커피와 맛있는 음료를 합리적인 가격에 제공해드리는 우리는 "더벤티"입니다
-    </div>
-    <div class="wrap_image">
-        <img th:src="@{/image/community.jpeg}" src="/static/image/community.jpeg" alt="">
-    </div>
-</div>
+        <span class="writer_date"><!--작성자 | 작성일-->
+        <span th:text="${noticeDto.memberId}" th:value="${noticeDto.memberId}"></span> |
+        <span th:text="${#temporals.format(noticeDto.createdDate,'yyyy.MM.dd')}" th:value="${noticeDto.createdDate}"></span>
+    </span>
 
-<div class="notice_container">
-    <li class="notice_category">
-        <a class="subCategory" id="notice" href="/notice">공지사항</a>
-        <a class="subCategory" id="press" href="#">보도자료</a>
-        <a class="subCategory" href="#">이벤트</a>
-        <a class="subCategory" href="#">칭찬매장</a>
-        <a class="subCategory" href="#">더벤티 이야기</a>
-        <a class="subCategory" href="#">SNS</a>
-        <a class="subCategory" href="#">자주하는 질문</a>
-        <a class="subCategory" href="#">벤티럭 사연접수</a>
-        <a class="subCategory" href="#">THEVENGERS 봉사활동</a>
-    </li>
-    <hr class="notice_hr">
-</div>
+        <label for="category"></label>
+        <select class="select-category" id="category" name="category">
+            <option value="">분류</option>
+            <option th:each="category : ${category}" th:value="${noticeDto.category}" th:text="${category}"></option>
+        </select>
 
-<div class="notice_board_button">
-    <button type="button" id="button_notice" onclick="location.href='/notice'">공지사항</button>
-    <button type="button" id="button_press" onclick="location.href='/press'">보도자료</button>
-</div>
+        <textarea name="detailContent" id="editor" th:text = "${noticeDto.detailContent}" th:value="${noticeDto.detailContent}"></textarea>
 
-<div class="selectForm">
-    <form method="get">
-        <label>
-            <select class="select-category">
-                <option value="0">분류</option>
-                <option value="1">소식</option>
-                <option value="2">출시</option>
-                <option value="3">이벤트</option>
-                <option value="4">발표</option>
-            </select>
-        </label>
+        <input type="hidden" id="edit-form" name="_method" value="put"/>
+        <button type="submit" class="post-button">글수정</button>
+        <button type="button" class="list-button" onclick="location.href='/notice'">목록</button>
     </form>
-</div>
-
-<div id="noticeBoard">
-    <div id="noticeBoard_hr"></div>
-    <ul>
-        <li class="noticeBoardList">
-            <ul id="ulBoard">
-                <li>
-                    <ul>
-                        <li>번호</li>
-                        <li>분류</li>
-                        <li>제목</li>
-                        <li>이름</li>
-                        <li>작성일</li>
-                    </ul>
-                </li>
-                <li>
-                    <ul th:each="notice:${noticeList}">
-                        <li th:text="${notice.createdNumber}"></li>
-                        <li th:text="${notice.category}"></li>
-                        <li class="detailTitle">
-                            <a th:href="@{'/detailPageView/' + ${notice.createdNumber}}">
-                                <span th:text="${notice.detailTitle}"></span>
-                            </a>
-                        </li>
-                        <li th:text="${notice.memberId}"></li>
-                        <li th:text="${#temporals.format(notice.createdDate,'yyyy.MM.dd')}"></li>
-                    </ul>
-                </li>
-            </ul>
-        </li><!--noticeBoardList-->
-
-        <li>
-            <div id="divPaging">
-                <div><a href="#"><i class="fa fa-angle-double-left"></i></a></div>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div><a href="#"><i class="fa fa-angle-double-right"></i></a></div>
-            </div>
-        </li>
-    </ul>
-
-</div><!--noticeBoard-->
-
-<div class="searchForm-line"></div>
-
-<div class="searchForm">
-    <form method="post">
-        <label>
-            <select class="search-category">
-                <option>제목</option>
-                <option>내용</option>
-            </select>
-            <input type="text" class="search-text" value="">
-            <input type="button" class="search-button" value="검색">
-        </label>
-        <button type="button" class="post-button" onclick="location.href='/detailPageWrite'">글작성</button>
-    </form>
-</div><!--searchForm-->
-
-<div class="searchForm-line"></div>
+</label>
 
 
 <!--footer-->
@@ -264,9 +158,13 @@
     </div>
 </footer>
 
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
 </body>
 </html>

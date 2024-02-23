@@ -1,7 +1,6 @@
 package com.example.demo_homepage.controller;
 
 import com.example.demo_homepage.dto.NoticeDto;
-import com.example.demo_homepage.repository.NoticeRepository;
 import com.example.demo_homepage.service.NoticeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +12,10 @@ import java.util.List;
 @Controller
 public class NoticeController {
 
-    private final NoticeRepository noticeRepository;
     private final NoticeService noticeService;
 
-    private NoticeController(NoticeRepository noticeRepository, NoticeService noticeService) {
+    private NoticeController(NoticeService noticeService) {
         this.noticeService = noticeService;
-        this.noticeRepository = noticeRepository;
     }
 
     @GetMapping("/notice")
@@ -29,7 +26,7 @@ public class NoticeController {
     }
 
     @GetMapping("/detailPageWrite")
-    public String populateList(Model model) {
+    public String detailPageWriteGet(Model model) {
         List<String> categories = new ArrayList<>();
         categories.add("소식");
         categories.add("뉴스");
@@ -37,20 +34,50 @@ public class NoticeController {
         categories.add("발표");
         model.addAttribute("noticeDto", new NoticeDto());
         model.addAttribute("category", categories);
-        return "detailPageWrite";
 
+        return "detailPageWrite";
     }
 
+    //게시글 저장
     @PostMapping("/detailPageWrite")
-    public String detailPagePost(NoticeDto noticeDto) {
+    public String saveNoticePost(NoticeDto noticeDto) {
         noticeService.saveNoticePost(noticeDto);
+        //noticeService.savePost(noticeDto); //createdNumber
         return "redirect:/notice";
     }
 
-    @GetMapping("/detailPageView")
-    public String detailPageView(Model model, @RequestParam Long created_number) {
-        model.addAttribute("detailPageView", noticeRepository.findById(created_number).orElse(null));
-        System.out.println(created_number + "::::상세페이지_글번호");
+    @GetMapping("/detailPageView/{createdNumber}")
+    public String detailPageWriteView(Model model, @PathVariable("createdNumber") Long createdNumber) {
+        List<String> categories = new ArrayList<>();
+        categories.add("소식");
+        categories.add("뉴스");
+        categories.add("이벤트");
+        categories.add("발표");
+        model.addAttribute("category", categories);
+        NoticeDto noticeDto = noticeService.findById(createdNumber);
+        model.addAttribute("noticeDto", noticeDto);
         return "detailPageView";
     }
+
+    @DeleteMapping("/detailPageView/{createdNumber}")
+    public String deleteNoticePost(@PathVariable("createdNumber") Long createdNumber){
+        noticeService.deleteNoticePost(createdNumber);
+        return "redirect:/notice";
+    }
+
+    @GetMapping("/detailPageView/edit/{createdNumber}")
+    public String edit(@PathVariable("createdNumber") Long createdNumber, Model model) {
+        NoticeDto noticeDto = noticeService.findById(createdNumber);
+        model.addAttribute("noticeDto", noticeDto);
+        return "edit";
+    }
+
+    @PutMapping("/detailPageView/edit/{createdNumber}")
+    public String editPut(@PathVariable("createdNumber") Long createdNumber, NoticeDto noticeDto) {
+        noticeDto.setCreatedNumber(createdNumber);
+        noticeService.saveNoticePost(noticeDto);
+        System.out.println("수정된제목::" + noticeDto.getDetailTitle());
+        return "redirect:/notice";
+    }
+
 }
