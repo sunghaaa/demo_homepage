@@ -1,0 +1,139 @@
+header{
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+ul, li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align:center;
+}
+
+#topMenu{
+    padding-left:1%;
+    padding-top:25px;
+    height: 80px;
+    width: 100%;
+    position: relative;
+    background-color: white;
+    z-index:999;
+}
+
+#topMenu ul li{
+    float:left;
+    line-height: 30px;
+    position: relative;
+}
+
+.menuLink, .submenuLink {
+    text-decoration:none;
+    display: block;
+    width: 180px;
+    color: black;
+    background-color:white;
+}
+
+.menuLink{
+    font-size:20px;
+    letter-spacing: 1px;
+    font-weight:600;
+    padding-bottom:10%;
+}
+
+.submenu {
+    position: absolute;
+    display:none;
+}
+
+.topMenuLi:hover .submenu {
+    display:block;
+}
+
+.menuLink:hover, .submenuLink:hover {
+    color: #7b00a0;
+}
+
+.logo img{
+    margin-left:5px;
+    height:auto;
+    width:190px;
+}
+
+.symbol{
+    text-decoration:none;
+    letter-spacing: 1px;
+    font-size:18px;
+    color:white;
+    margin-top:-6%;
+    margin-left: 30%;
+    bottom:1%;
+    height:47px;
+    width:150px;
+    border-radius:50px;
+    background-color: #7b00a0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.symbol:hover{
+    background-color:black;
+}
+
+.circle_menu{
+    float:right;
+    position:sticky;
+    z-index:900;
+    top:0;
+    padding-top:17%;
+    margin-top:-100%;
+    margin-right: 0.5%;
+    height:100px;
+}
+
+.circle{
+   border-radius:100%;
+   background-color:#291b35;
+   width:77px;
+   height:77px;
+   color:white;
+   font-size:12px;
+   text-align: center;
+   margin-top:15%;
+   padding-top:23%;
+}
+
+.circle:hover{
+    background-color: #7b00a0;
+}
+
+.circle_tel{
+    padding-left:10px;
+    font-size:17px;
+    white-space:nowrap;
+}
+
+#circle_franchise{
+    width:20px;
+    height:20px;
+}
+
+.circle_event{
+    border-radius:100%;
+    background-color:#7b00a0;
+    width:75px;
+    height:75px;
+    color:white;
+    font-size:12px;
+    margin-top:12px;
+    padding-top: 11px;
+    line-height:1.1;
+}
+
+.circle_event img{
+    width:20px;
+    height:20px;
+    margin-bottom:5%;
+}

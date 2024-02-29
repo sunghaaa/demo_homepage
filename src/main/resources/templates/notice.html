@@ -1,272 +1,127 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/notice.css}">
-    <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
-    <title>NOTICE_게시판</title>
+    <title>공지사항 리스트 페이지</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/notice.css}">
+    </th:block>
+    <th:block layout:fragment="script">
+        <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
+    </th:block>
 </head>
 <body>
-
-<header>
-    <div class="topMenuList">
-        <div id="topMenu">
-            <ul>
-                <li class="topMenuLi">
-                    <div class="logo">
-                        <a href="/main"><img th:src="@{/image/theVentiLogo.png}" alt=""
-                                             src="/static/image/theVentiLogo.png"></a>
-                    </div>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="#">BRAND</a>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenuLink">더벤티 소개</a></li>
-                        <li><a href="#" class="submenuLink">더벤티 연혁</a></li>
-                        <li><a href="#" class="submenuLink">BI 소개</a></li>
-                        <li><a href="#" class="submenuLink">찾아오시는 길</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="#">MENU</a>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenuLink">더벤티 커피이야기</a></li>
-                        <li><a href="#" class="submenuLink">신메뉴</a></li>
-                        <li><a href="#" class="submenuLink">전체메뉴</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="#">STORE</a>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenuLink">매장찾기</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="#">MEMBERSHIP</a>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenuLink">더벤티 APP 소개</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="/notice">COMMUNITY</a>
-                    <ul class="submenu">
-                        <li><a href="/notice" class="submenuLink">공지사항</a></li>
-                        <li><a href="#" class="submenuLink">보도자료</a></li>
-                        <li><a href="#" class="submenuLink">이벤트</a></li>
-                        <li><a href="#" class="submenuLink">칭찬매장</a></li>
-                        <li><a href="#" class="submenuLink">더벤티 이야기</a></li>
-                        <li><a href="#" class="submenuLink">SNS</a></li>
-                        <li><a href="#" class="submenuLink">자주하는 질문</a></li>
-                        <li><a href="#" class="submenuLink">벤티럭 사연접수</a></li>
-                        <li><a href="#" class="submenuLink">THEVENGERS 봉사활동</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="symbol" href="/main">프랜차이즈&nbsp;
-                        <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
-                    </a>
-                </li>
-            </ul>
+<div layout:fragment="content">
+    <div class="wrap">
+        <div class="wrap_text">
+            <h1>COMMUNITY</h1>
+            좋은 커피와 맛있는 음료를 합리적인 가격에 제공해드리는 우리는 "더벤티"입니다
+        </div>
+        <div class="wrap_image">
+            <img th:src="@{/image/community.jpeg}" src="/static/image/community.jpeg" alt="">
         </div>
     </div>
-</header>
 
-
-<div class="circle_menu">
-    <ul>
-        <li>
-            <div class="circle">가맹문의
-                <p class="circle_tel">1661-4553</p>
-            </div>
+    <div class="notice_container">
+        <li class="notice_category">
+            <a class="subCategory" id="notice" href="/notice">공지사항</a>
+            <a class="subCategory" id="press" href="#">보도자료</a>
+            <a class="subCategory" href="#">이벤트</a>
+            <a class="subCategory" href="#">칭찬매장</a>
+            <a class="subCategory" href="#">더벤티 이야기</a>
+            <a class="subCategory" href="#">SNS</a>
+            <a class="subCategory" href="#">자주하는 질문</a>
+            <a class="subCategory" href="#">벤티럭 사연접수</a>
+            <a class="subCategory" href="#">THEVENGERS 봉사활동</a>
         </li>
-        <li>
-            <div class="circle">가맹상담<br>
-                <img id="circle_franchise" th:src="@{/image/consulting.png}" src="/static/image/consulting.png" alt="">
-            </div>
-        </li>
-        <li>
-            <div class="circle">고객상담
-                <p class="circle_tel">1644-0513</p>
-            </div>
-        </li>
-        <li>
-            <div class="circle_event">
-                <img id="circle_event_img" th:src="@{/image/quick_event.png}" src="/static/image/quick_event.png"
-                     alt="">
-                <p>벤티럭<br>사연접수</p>
-            </div>
-        </li>
-    </ul>
-</div>
-
-<div class="wrap">
-    <div class="wrap_text">
-        <h1>COMMUNITY</h1>
-        좋은 커피와 맛있는 음료를 합리적인 가격에 제공해드리는 우리는 "더벤티"입니다
+        <hr class="notice_hr">
     </div>
-    <div class="wrap_image">
-        <img th:src="@{/image/community.jpeg}" src="/static/image/community.jpeg" alt="">
+
+    <div class="notice_board_button">
+        <button type="button" id="button_notice" onclick="location.href='/notice'">공지사항</button>
+        <button type="button" id="button_press" onclick="location.href='/press'">보도자료</button>
     </div>
-</div>
 
-<div class="notice_container">
-    <li class="notice_category">
-        <a class="subCategory" id="notice" href="/notice">공지사항</a>
-        <a class="subCategory" id="press" href="#">보도자료</a>
-        <a class="subCategory" href="#">이벤트</a>
-        <a class="subCategory" href="#">칭찬매장</a>
-        <a class="subCategory" href="#">더벤티 이야기</a>
-        <a class="subCategory" href="#">SNS</a>
-        <a class="subCategory" href="#">자주하는 질문</a>
-        <a class="subCategory" href="#">벤티럭 사연접수</a>
-        <a class="subCategory" href="#">THEVENGERS 봉사활동</a>
-    </li>
-    <hr class="notice_hr">
-</div>
-
-<div class="notice_board_button">
-    <button type="button" id="button_notice" onclick="location.href='/notice'">공지사항</button>
-    <button type="button" id="button_press" onclick="location.href='/press'">보도자료</button>
-</div>
-
-<div class="selectForm">
-    <form method="get">
-        <label>
-            <select class="select-category">
-                <option value="0">분류</option>
-                <option value="1">소식</option>
-                <option value="2">출시</option>
-                <option value="3">이벤트</option>
-                <option value="4">발표</option>
-            </select>
-        </label>
-    </form>
-</div>
-
-<div id="noticeBoard">
-    <div id="noticeBoard_hr"></div>
-    <ul>
-        <li class="noticeBoardList">
-            <ul id="ulBoard">
-                <li>
-                    <ul>
-                        <li>번호</li>
-                        <li>분류</li>
-                        <li>제목</li>
-                        <li>이름</li>
-                        <li>작성일</li>
-                    </ul>
-                </li>
-                <li>
-                    <ul th:each="notice:${noticeList}">
-                        <li th:text="${notice.createdNumber}"></li>
-                        <li th:text="${notice.category}"></li>
-                        <li class="detailTitle">
-                            <a th:href="@{'/detailPageView/' + ${notice.createdNumber}}">
-                                <span th:text="${notice.detailTitle}"></span>
-                            </a>
-                        </li>
-                        <li th:text="${notice.memberId}"></li>
-                        <li th:text="${#temporals.format(notice.createdDate,'yyyy.MM.dd')}"></li>
-                    </ul>
-                </li>
-            </ul>
-        </li><!--noticeBoardList-->
-
-        <li>
-            <div id="divPaging">
-                <div><a href="#"><i class="fa fa-angle-double-left"></i></a></div>
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-                <div>5</div>
-                <div><a href="#"><i class="fa fa-angle-double-right"></i></a></div>
-            </div>
-        </li>
-    </ul>
-
-</div><!--noticeBoard-->
-
-<div class="searchForm-line"></div>
-
-<div class="searchForm">
-    <form method="post">
-        <label>
-            <select class="search-category">
-                <option>제목</option>
-                <option>내용</option>
-            </select>
-            <input type="text" class="search-text" value="">
-            <input type="button" class="search-button" value="검색">
-        </label>
-        <button type="button" class="post-button" onclick="location.href='/detailPageWrite'">글작성</button>
-    </form>
-</div><!--searchForm-->
-
-<div class="searchForm-line"></div>
-
-
-<!--footer-->
-<footer id="footer" class="footer">
-    <div class="footer-first">
-        <div class="container">
-            <div class="footer-logo">
-                <img src="/static/image/the-venti-footer-logo.png" alt=""
-                     th:src="@{/image/the-venti-footer-logo.png}">
-            </div>
-            <div class="footer-category">
-                <a href="#">더벤티 소개</a>
-                <a href="#">고객상담</a>
-                <a href="#">개인정보 처리방침</a>
-                <a href="#">이용약관</a>
-            </div>
-            <div class="footer-sns">
-                <a href="#"><img src="/static/image/f_youtube.png" alt="" th:src="@{/image/f_youtube.png}"></a>
-                <a href="#"><img src="/static/image/f_insta.png" alt="" th:src="@{/image/f_insta.png}"></a>
-                <a href="#"><img src="/static/image/f_facebook.png" alt="" th:src="@{/image/f_facebook.png}"></a>
-                <a href="#"><img src="/static/image/f_blog.png" alt="" th:src="@{/image/f_blog.png}"></a>
-            </div>
-        </div>
+    <div class="selectForm">
+        <form method="get">
+            <label>
+                <select class="select-category">
+                    <option value="0">분류</option>
+                    <option value="1">소식</option>
+                    <option value="2">출시</option>
+                    <option value="3">이벤트</option>
+                    <option value="4">발표</option>
+                </select>
+            </label>
+        </form>
     </div>
-    <div class="footer-line"></div>
-    <div class="footer-second">
-        <div class="container">
-            <div class="footer-contact-tel">
-                <div>가맹문의 <a href="#">1661-4553</a></div>
-                <div>고객센터 <a href="#">1644-0513</a></div>
-            </div>
-            <div class="footer-address">
-                <div class="footer-busan">더벤티 부산&교육센터<span
-                        class="busan-detail">부산광역시 해운대구 센텀서로 30, 2507호(KNN타워)</span>
-                </div>
-                <div class="footer-seoul">더벤티 서울&교육센터<span class="seoul-detail">서울특별시 구로구 디지털로33길 27 408~414호</span>
-                </div>
-                <div class="footer-company">
-                    <span>(주)에스앤씨세인</span>
-                    <span class="footer-company-number">사업자번호 : 534-88-00122</span>
-                    <span class="footer-company-people">대표이사 : 박수암 강삼남 최준경</span>
-                </div>
 
-                <div class="footer-copyright">
-                    Copyright &copy; THEVENTI. All right Reserved.
-                    <a href="#">Created By&nbsp; <span class="masstige">Masstige.</span></a>
+    <div id="noticeBoard">
+        <div id="noticeBoard_hr"></div>
+        <ul>
+            <li class="noticeBoardList">
+                <ul id="ulBoard">
+                    <li>
+                        <ul>
+                            <li>번호</li>
+                            <li>분류</li>
+                            <li>제목</li>
+                            <li>이름</li>
+                            <li>작성일</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul th:each="notice:${noticeList}">
+                            <li th:text="${notice.createdNumber}"></li>
+                            <li th:text="${notice.category}"></li>
+                            <li class="detailTitle">
+                                <a th:href="@{'/detailPageView/' + ${notice.createdNumber}}">
+                                    <span th:text="${notice.detailTitle}"></span>
+                                </a>
+                            </li>
+                            <li th:text="${notice.memberId}"></li>
+                            <li th:text="${#temporals.format(notice.createdDate,'yyyy.MM.dd')}"></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li><!--noticeBoardList-->
+
+            <li>
+                <div id="divPaging">
+                    <div><a href="#"><i class="fa fa-angle-double-left"></i></a></div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div><a href="#"><i class="fa fa-angle-double-right"></i></a></div>
                 </div>
-            </div>
-            <div class="footer-intro">
-                <a href="#">인트로&nbsp;
-                    <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
-                </a>
-            </div>
-        </div>
-    </div>
-</footer>
+            </li>
+        </ul>
 
+    </div><!--noticeBoard-->
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <div class="searchForm-line"></div>
+
+    <div class="searchForm">
+        <form method="post">
+            <label>
+                <select class="search-category">
+                    <option>제목</option>
+                    <option>내용</option>
+                </select>
+                <input type="text" class="search-text" value="">
+                <input type="button" class="search-button" value="검색">
+            </label>
+            <button type="button" class="post-button" onclick="location.href='/detailPageWrite'">글작성</button>
+        </form>
+    </div><!--searchForm-->
+
+    <div class="searchForm-line"></div>
+
+</div>
 </body>
 </html>

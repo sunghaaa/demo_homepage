@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>footer_fragment</title>
+</head>
+
+<body>
+
+<footer th:fragment="footerFragment">
+    <div class="footer-first">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="/static/image/the-venti-footer-logo.png" alt=""
+                     th:src="@{/image/the-venti-footer-logo.png}">
+            </div>
+            <div class="footer-category">
+                <a href="#">더벤티 소개</a>
+                <a href="#">고객상담</a>
+                <a href="#">개인정보 처리방침</a>
+                <a href="#">이용약관</a>
+            </div>
+            <div class="footer-sns">
+                <a href="#"><img src="/static/image/f_youtube.png" alt="" th:src="@{/image/f_youtube.png}"></a>
+                <a href="#"><img src="/static/image/f_insta.png" alt="" th:src="@{/image/f_insta.png}"></a>
+                <a href="#"><img src="/static/image/f_facebook.png" alt="" th:src="@{/image/f_facebook.png}"></a>
+                <a href="#"><img src="/static/image/f_blog.png" alt="" th:src="@{/image/f_blog.png}"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-line"></div>
+    <div class="footer-second">
+        <div class="container">
+            <div class="footer-contact-tel">
+                <div>가맹문의 <a href="#">1661-4553</a></div>
+                <div>고객센터 <a href="#">1644-0513</a></div>
+            </div>
+            <div class="footer-address">
+                <div class="footer-busan">더벤티 부산&교육센터<span
+                        class="busan-detail">부산광역시 해운대구 센텀서로 30, 2507호(KNN타워)</span>
+                </div>
+                <div class="footer-seoul">더벤티 서울&교육센터<span class="seoul-detail">서울특별시 구로구 디지털로33길 27 408~414호</span>
+                </div>
+                <div class="footer-company">
+                    <span>(주)에스앤씨세인</span>
+                    <span class="footer-company-number">사업자번호 : 534-88-00122</span>
+                    <span class="footer-company-people">대표이사 : 박수암 강삼남 최준경</span>
+                </div>
+                <div class="footer-copyright">
+                    Copyright &copy; THEVENTI. All right Reserved.
+                    <a href="#">Created By&nbsp; <span class="masstige">Masstige.</span></a>
+                </div>
+            </div>
+            <div class="footer-intro">
+                <a href="#">인트로&nbsp;
+                    <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

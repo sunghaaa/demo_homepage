@@ -23,7 +23,7 @@ public class NoticeEntity {
     @Column(name = "detail_title", nullable = false)
     private String detailTitle;
 
-    @Column(name = "member_id", nullable = false)
+    @Column(name = "member_id", nullable = false, updatable = false)
     private String memberId;
 
     @Column(name = "detail_content", nullable = false)
@@ -33,7 +33,7 @@ public class NoticeEntity {
     private String category;
 
     @CreatedDate
-    @Column(name = "created_date", nullable = false)
+    @Column(name = "created_date", nullable = false, updatable = false)
     private LocalDate createdDate;
 
 

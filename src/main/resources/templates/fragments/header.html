@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>header_fragment</title>
+</head>
+<body>
+<header th:fragment="headerFragment">
+    <div class="topMenuList">
+        <div id="topMenu">
+            <ul>
+                <li class="topMenuLi">
+                    <div class="logo">
+                        <a href="/main"><img th:src="@{/image/theVentiLogo.png}" alt=""
+                                             src="/static/image/theVentiLogo.png"></a>
+                    </div>
+                </li>
+                <li class="topMenuLi">
+                    <a class="menuLink" href="#">BRAND</a>
+                    <ul class="submenu">
+                        <li><a href="#" class="submenuLink">더벤티 소개</a></li>
+                        <li><a href="#" class="submenuLink">더벤티 연혁</a></li>
+                        <li><a href="#" class="submenuLink">BI 소개</a></li>
+                        <li><a href="#" class="submenuLink">찾아오시는 길</a></li>
+                    </ul>
+                </li>
+                <li class="topMenuLi">
+                    <a class="menuLink" href="#">MENU</a>
+                    <ul class="submenu">
+                        <li><a href="#" class="submenuLink">더벤티 커피이야기</a></li>
+                        <li><a href="#" class="submenuLink">신메뉴</a></li>
+                        <li><a href="#" class="submenuLink">전체메뉴</a></li>
+                    </ul>
+                </li>
+                <li class="topMenuLi">
+                    <a class="menuLink" href="#">STORE</a>
+                    <ul class="submenu">
+                        <li><a href="#" class="submenuLink">매장찾기</a></li>
+                    </ul>
+                </li>
+                <li class="topMenuLi">
+                    <a class="menuLink" href="#">MEMBERSHIP</a>
+                    <ul class="submenu">
+                        <li><a href="#" class="submenuLink">더벤티 APP 소개</a></li>
+                    </ul>
+                </li>
+                <li class="topMenuLi">
+                    <a class="menuLink" href="/notice">COMMUNITY</a>
+                    <ul class="submenu">
+                        <li><a href="/notice" class="submenuLink">공지사항</a></li>
+                        <li><a href="#" class="submenuLink">보도자료</a></li>
+                        <li><a href="#" class="submenuLink">이벤트</a></li>
+                        <li><a href="#" class="submenuLink">칭찬매장</a></li>
+                        <li><a href="#" class="submenuLink">더벤티 이야기</a></li>
+                        <li><a href="#" class="submenuLink">SNS</a></li>
+                        <li><a href="#" class="submenuLink">자주하는 질문</a></li>
+                        <li><a href="#" class="submenuLink">벤티럭 사연접수</a></li>
+                        <li><a href="#" class="submenuLink">THEVENGERS 봉사활동</a></li>
+                    </ul>
+                </li>
+                <li class="topMenuLi">
+                    <a class="symbol" href="/main">프랜차이즈&nbsp;
+                        <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="circle_menu">
+        <ul>
+            <li>
+                <div class="circle">가맹문의
+                    <p class="circle_tel">1661-4553</p>
+                </div>
+            </li>
+            <li>
+                <div class="circle">가맹상담<br>
+                    <img id="circle_franchise" src="/image/consulting.png" alt="">
+                </div>
+            </li>
+            <li>
+                <div class="circle">고객상담
+                    <p class="circle_tel">1644-0513</p>
+                </div>
+            </li>
+            <li>
+                <div class="circle_event">
+                    <img id="circle_event_img" src="/image/quick_event.png"
+                         alt="">
+                    <p>벤티럭<br>사연접수</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</header>
+</body>
+</html>

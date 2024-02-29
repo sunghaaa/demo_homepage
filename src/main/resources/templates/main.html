@@ -1,520 +1,461 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/default}">
 <head>
     <meta charset="UTF-8">
-    <title>메인페이지</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8.0.1/swiper-bundle.min.css"/>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
-    <script src="https://cdn.jsdelivr.net/npm/swiper@8.0.1/swiper-bundle.min.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <title>메인 페이지</title>
+    <th:block layout:fragment="css">
+        <link rel="stylesheet" type="text/css" th:href="@{/css/main.css}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8.0.1/swiper-bundle.min.css"/>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    </th:block>
+    <th:block layout:fragment="script">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+                crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.js"
+                integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@8.0.1/swiper-bundle.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
+    </th:block>
 </head>
-
 <body>
-
-<header>
-    <div class="topMenuList">
-        <div id="topMenu">
-            <ul>
-                <li class="topMenuLi">
-                    <div class="logo">
-                        <a href="/main"><img th:src="@{/image/theVentiLogo.png}" alt=""
-                                             src="/static/image/theVentiLogo.png"></a>
-                    </div>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="#">BRAND</a>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenuLink">더벤티 소개</a></li>
-                        <li><a href="#" class="submenuLink">더벤티 연혁</a></li>
-                        <li><a href="#" class="submenuLink">BI 소개</a></li>
-                        <li><a href="#" class="submenuLink">찾아오시는 길</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="#">MENU</a>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenuLink">더벤티 커피이야기</a></li>
-                        <li><a href="#" class="submenuLink">신메뉴</a></li>
-                        <li><a href="#" class="submenuLink">전체메뉴</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="#">STORE</a>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenuLink">매장찾기</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="#">MEMBERSHIP</a>
-                    <ul class="submenu">
-                        <li><a href="#" class="submenuLink">더벤티 APP 소개</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="menuLink" href="/notice">COMMUNITY</a>
-                    <ul class="submenu">
-                        <li><a href="/notice" class="submenuLink">공지사항</a></li>
-                        <li><a href="#" class="submenuLink">보도자료</a></li>
-                        <li><a href="#" class="submenuLink">이벤트</a></li>
-                        <li><a href="#" class="submenuLink">칭찬매장</a></li>
-                        <li><a href="#" class="submenuLink">더벤티 이야기</a></li>
-                        <li><a href="#" class="submenuLink">SNS</a></li>
-                        <li><a href="#" class="submenuLink">자주하는 질문</a></li>
-                        <li><a href="#" class="submenuLink">벤티럭 사연접수</a></li>
-                        <li><a href="#" class="submenuLink">THEVENGERS 봉사활동</a></li>
-                    </ul>
-                </li>
-                <li class="topMenuLi">
-                    <a class="symbol" href="/main">프랜차이즈&nbsp;
-                        <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
-                    </a>
-                </li>
-            </ul>
-        </div><!--topMenu-->
-    </div>
-</header>
-
-<div class="circle_menu">
-    <ul>
-        <li>
-            <div class="circle">가맹문의
-                <p class="circle_tel">1661-4553</p>
-            </div>
-        </li>
-        <li>
-            <div class="circle">가맹상담<br>
-                <img id="circle_franchise" th:src="@{/image/consulting.png}" src="/static/image/consulting.png" alt="">
-            </div>
-        </li>
-        <li>
-            <div class="circle">고객상담
-                <p class="circle_tel">1644-0513</p>
-            </div>
-        </li>
-        <li>
-            <div class="circle_event">
-                <img id="circle_event_img" th:src="@{/image/quick_event.png}" src="/static/image/quick_event.png"
-                     alt="">
-                <p>벤티럭<br>사연접수</p>
-            </div>
-        </li>
-    </ul>
-</div>
-
-<!--carousel-->
-<section class="carouselMainImage">
-    <div class="carouselMainTargetImage">
-        <div id="carouselTarget" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="0" class="active"
-                        aria-label="slide 0">
-                </button>
-                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="1"
-                        aria-label="slide 1">
-                </button>
-                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="2"
-                        aria-label="slide 2">
-                </button>
-                <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="3"
-                        aria-label="slide 3">
-                </button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img th:src="@{/image/main_image_01.jpg}" alt="" src="/static/image/main_image_01.jpg"/>
-                </div>
-                <div class="carousel-item">
-                    <img th:src="@{/image/main_image_02.jpg}" alt="" src="/static/image/main_image_02.jpg"/>
-                </div>
-                <div class="carousel-item">
-                    <img th:src="@{/image/main_image_03.jpg}" alt="" src="/static/image/main_image_03.jpg"/>
-                </div>
-                <div class="carousel-item">
-                    <img th:src="@{/image/main_image_04.jpg}" alt="" src="/static/image/main_image_04.jpg"/>
-                </div>
-            </div><!--carousel-item carousel-inner-->
-        </div>
-    </div><!--carousel-->
-</section>
-
-<!--앱주문/매장찾기-->
-<section class="order_search_main">
-    <div class="order_search">
-        <div class="order_app" data-aos="fade-down" data-aos-duration="1000">
-            <div class="order_app_content">
-                <div class="order_title">더벤티 앱으로 더욱 풍성하게!</div>
-                <div class="order_app_circle">
-                    <a href="#">앱으로 주문</a>
-                </div>
-                <div class="order_app_hashtag">#퀵오더 #이벤트 #혜택쿠폰 #앱다운로드 #앱주문</div>
-            </div>
-            <img src="/static/image/main-icon1.png" alt="" th:src="@{/image/main-icon1.png}">
-        </div>
-        <div class="search_store" data-aos="fade-up" data-aos-duration="1000">
-            <div class="search_title">가까운 더벤티 매장찾기!</div>
-            <div class="search_store_input">
-                <form action="#">
-                    <label>
-                        <input type="text" placeholder="검색어를 입력하세요">
-                    </label>
-                    <button type="submit" class="search_button">
-                        <i class="fa-solid fa-magnifying-glass"></i>
+<div layout:fragment="content">
+    <!--carousel-->
+    <section class="carouselMainImage">
+        <div class="carouselMainTargetImage">
+            <div id="carouselTarget" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="0" class="active"
+                            aria-label="slide 0">
                     </button>
-                </form>
-            </div>
-            <img src="/static/image/main-icon2.png" alt="" th:src="@{/image/main-icon2.png}">
-            <div class="search_store_hashtag">#더벤티 #더벤티 매장찾기</div>
-        </div>
-    </div>
-</section>
-
-<!--best_menu_title-->
-<section class="best-menu-section" data-aos="fade-down" data-aos-duration="1000">
-    <div class="best_menu_first">
-        <div class="best_menu_title">BEST MENU
-            <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
-        </div>
-        <div class="best_menu_category">
-            <a href="#">커피</a>
-            <a href="#">디카페인</a>
-            <a href="#">아이스 블렌디드</a>
-            <a href="#">주스/에이드</a>
-            <a href="#">버블티/티</a>
-            <a href="#">베버리지</a>
-            <a href="#">사이드메뉴/RTD</a>
-        </div>
-    </div><!--best_menu_first_title-->
-
-    <div class="best-menu-second">
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <!--swiper-slide-->
-                <!--카페라떼 바닐라딥라떼 아인슈페너 아메리카노-->
-                <div class="swiper-slide">
-                    <div class="best-menu-detail">
-                        <img src="/static/image/caffelatte.png" alt="" th:src="@{/image/caffelatte.png}">
-                        <div class="detail-main">카페라떼</div>
-                        <span class="coffee-detail"></span>
-                    </div>
+                    <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="1"
+                            aria-label="slide 1">
+                    </button>
+                    <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="2"
+                            aria-label="slide 2">
+                    </button>
+                    <button type="button" data-bs-target="#carouselTarget" data-bs-slide-to="3"
+                            aria-label="slide 3">
+                    </button>
                 </div>
-                <div class="swiper-slide">
-                    <div class="best-menu-detail">
-                        <img src="/static/image/vanilla.png" alt="" th:src="@{/image/vanilla.png}">
-                        <div>바닐라딥라떼</div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img th:src="@{/image/main_image_01.jpg}" alt="" src="/static/image/main_image_01.jpg"/>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="best-menu-detail">
-                        <img src="/static/image/einspanner.png" alt="" th:src="@{/image/einspanner.png}">
-                        <div>아인슈페너</div>
+                    <div class="carousel-item">
+                        <img th:src="@{/image/main_image_02.jpg}" alt="" src="/static/image/main_image_02.jpg"/>
                     </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="best-menu-detail">
-                        <img src="/static/image/iceAme.png" alt="" th:src="@{/image/iceAme.png}">
-                        <div>아이스 아메리카노</div>
+                    <div class="carousel-item">
+                        <img th:src="@{/image/main_image_03.jpg}" alt="" src="/static/image/main_image_03.jpg"/>
                     </div>
+                    <div class="carousel-item">
+                        <img th:src="@{/image/main_image_04.jpg}" alt="" src="/static/image/main_image_04.jpg"/>
+                    </div>
+                </div><!--carousel-item carousel-inner-->
+            </div>
+        </div><!--carousel-->
+    </section>
+
+    <!--앱주문/매장찾기-->
+    <section class="order_search_main">
+        <div class="order_search">
+            <div class="order_app" data-aos="fade-down" data-aos-duration="1000">
+                <div class="order_app_content">
+                    <div class="order_title">더벤티 앱으로 더욱 풍성하게!</div>
+                    <div class="order_app_circle">
+                        <a href="#">앱으로 주문</a>
+                    </div>
+                    <div class="order_app_hashtag">#퀵오더 #이벤트 #혜택쿠폰 #앱다운로드 #앱주문</div>
                 </div>
-            </div><!--swiper-wrapper-->
-        </div><!--swiper-container-->
-        <button type="button" class="best-menu-button-prev"><i class="fa-solid fa-angle-left"></i></button>
-        <button type="button" class="best-menu-button-next"><i class="fa-solid fa-angle-right"></i></button>
-    </div><!--best-memu-second-->
-</section>
-
-<section class="special_tea_section">
-    <div class="special_tea">
-        <div data-aos="fade-down" data-aos-duration="1200">취향에 맞는<br>
-            <span class="special_tea_span">스페셜티 블렌드
-            <img src="/static/image/v-logo-icon-white.png" th:src="@{/image/v-logo-icon-white.png}" alt="">
-        </span>
-        </div>
-    </div>
-
-    <!--3가지 맛-->
-    <div class="taste">
-        <div class="taste_of_coffee_mild">
-            <div class="coffee_content">
-                <img th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
-                <div>마일드로스트</div>
+                <img src="/static/image/main-icon1.png" alt="" th:src="@{/image/main-icon1.png}">
             </div>
-            <div>견과류의 깔끔하고 고소한 맛과 향</div>
-            <div class="coffee_line"></div>
-            <div class="coffee_taste">MEDIUM BODY<br>Nutty, Mapple Syrup</div>
-            <img src="/static/image/taste-graph1.png" th:src="@{/image/taste-graph1.png}" alt=""/>
-        </div>
-
-        <!--마일드와 다크의 중간 작은 원두 이미지-->
-        <img id="special-logo" src="/static/image/special-logo-white.png" alt=""
-             th:src="@{/image/special-logo-white.png}">
-
-        <div class="taste_of_coffee_dark">
-            <div class="coffee_content">
-                <img id="dark_image" th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
-                <div>다크로스트</div>
+            <div class="search_store" data-aos="fade-up" data-aos-duration="1000">
+                <div class="search_title">가까운 더벤티 매장찾기!</div>
+                <div class="search_store_input">
+                    <form action="#">
+                        <label>
+                            <input type="text" placeholder="검색어를 입력하세요">
+                        </label>
+                        <button type="submit" class="search_button">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </form>
+                </div>
+                <img src="/static/image/main-icon2.png" alt="" th:src="@{/image/main-icon2.png}">
+                <div class="search_store_hashtag">#더벤티 #더벤티 매장찾기</div>
             </div>
-            <div>다크초콜릿의 깊고 진한 맛과 향</div>
-            <div class="coffee_line"></div>
-            <div class="coffee_taste">FULL BODY<br>Dark, Chocolate, Brouwn Sugar</div>
-            <img src="/static/image/taste-graph2.png" th:src="@{/image/taste-graph2.png}" alt=""/>
         </div>
+    </section>
 
-        <div class="taste_of_coffee_decaffeine">
-            <div class="coffee_content">
-                <div>디카프로스트</div>
+    <!--best_menu_title-->
+    <section class="best-menu-section" data-aos="fade-down" data-aos-duration="1000">
+        <div class="best_menu_first">
+            <div class="best_menu_title">BEST MENU
+                <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
             </div>
-            <div>카페인을 낮춘 깔끔한 맛과 향</div>
-            <div class="coffee_line"></div>
-            <div class="coffee_taste">Decaffeine BODY<br>Walnut, Cacao</div>
-            <img src="/static/image/taste-graph3.png" th:src="@{/image/taste-graph3.png}" alt=""/>
-        </div>
-    </div><!--taste--세가지 맛 나눈거-->
-</section>
+            <div class="best_menu_category">
+                <a href="#">커피</a>
+                <a href="#">디카페인</a>
+                <a href="#">아이스 블렌디드</a>
+                <a href="#">주스/에이드</a>
+                <a href="#">버블티/티</a>
+                <a href="#">베버리지</a>
+                <a href="#">사이드메뉴/RTD</a>
+            </div>
+        </div><!--best_menu_first_title-->
 
-<!--the_venti_sns_swiper-->
-<section class="sns-section">
-    <div class="sns-class" data-aos="fade-down" data-aos-duration="1000">
-        <div class="sns_title">THEVENTI SNS
-            <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
-        </div>
-    </div>
-
-    <div class="the-venti-sns">
-        <div class="sns-swiper" data-aos="fade-up" data-aos-duration="1500">
+        <div class="best-menu-second">
             <div class="swiper-container">
-                <div class="swiper-paging-button">
-                    <div class="swiper-pagination"></div>
-                    <button type="button" class="swiper-button swiper-button-prev"></button>
-                    <button type="button" class="swiper-button swiper-button-next"></button>
-                </div>
                 <div class="swiper-wrapper">
                     <!--swiper-slide-->
-                    <div class="swiper-slide sns-slide">
-                        <a href="#" class="the_venti_sns_circle">
-                            <img src="/static/image/berry-02.png" alt="" th:src="@{/image/berry-02.png}">
-                            <span class="sns_insta">
-                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
-                            </span>
-                        </a>
+                    <!--카페라떼 바닐라딥라떼 아인슈페너 아메리카노-->
+                    <div class="swiper-slide">
+                        <div class="best-menu-detail">
+                            <img src="/static/image/caffelatte.png" alt="" th:src="@{/image/caffelatte.png}">
+                            <div class="detail-main">카페라떼</div>
+                            <span class="coffee-detail"></span>
+                        </div>
                     </div>
-                    <div class="swiper-slide sns-slide">
-                        <a href="#" class="the_venti_sns_circle">
-                            <img src="/static/image/berry-01.jpg" alt="" th:src="@{/image/berry-01.jpg}">
-                            <span class="sns_insta">
-                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
-                            </span>
-                        </a>
+                    <div class="swiper-slide">
+                        <div class="best-menu-detail">
+                            <img src="/static/image/vanilla.png" alt="" th:src="@{/image/vanilla.png}">
+                            <div>바닐라딥라떼</div>
+                        </div>
                     </div>
-                    <div class="swiper-slide sns-slide">
-                        <a href="#" class="the_venti_sns_circle">
-                            <img src="/static/image/diary.jpg" alt="" th:src="@{/image/diary.jpg}">
-                            <span class="sns_insta">
-                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
-                            </span>
-                        </a>
+                    <div class="swiper-slide">
+                        <div class="best-menu-detail">
+                            <img src="/static/image/einspanner.png" alt="" th:src="@{/image/einspanner.png}">
+                            <div>아인슈페너</div>
+                        </div>
                     </div>
-                    <div class="swiper-slide sns-slide">
-                        <a href="#" class="the_venti_sns_circle">
-                            <img src="/static/image/tumbler.jpg" alt="" th:src="@{/image/tumbler.jpg}">
-                            <span class="sns_insta">
-                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
-                            </span>
-                        </a>
+                    <div class="swiper-slide">
+                        <div class="best-menu-detail">
+                            <img src="/static/image/iceAme.png" alt="" th:src="@{/image/iceAme.png}">
+                            <div>아이스 아메리카노</div>
+                        </div>
                     </div>
                 </div><!--swiper-wrapper-->
             </div><!--swiper-container-->
-        </div><!--sns-swiper-->
-    </div><!--the-venti-sns-->
-</section>
+            <button type="button" class="best-menu-button-prev"><i class="fa-solid fa-angle-left"></i></button>
+            <button type="button" class="best-menu-button-next"><i class="fa-solid fa-angle-right"></i></button>
+        </div><!--best-memu-second-->
+    </section>
 
-<section class="award-section">
-    <div class="awardMain">
-        <div class="award-container">
-            <div class="award-list">
-                <img src="/static/image/cart111.png" alt="" th:src="@{/image/cart111.png}">
-                <div class="award-detail">
-                    제 24회 한국프랜차이즈<br>우수 프랜차이즈 부문<br>협회장 표창
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img id="award-list-customer" src="/static/image/cart01.png" alt="" th:src="@{/image/cart01.png}">
-                <div class="award-detail">
-                    국가소비자중심<br>브랜드대상
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img src="/static/image/cart02.png" alt="" th:src="@{/image/cart02.png}">
-                <div class="award-detail">
-                    소비자가<br>신뢰하는<br>착한브랜드<br>대상
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img src="/static/image/cart03.png" alt="" th:src="@{/image/cart03.png}">
-                <div class="award-detail">
-                    한국소비자포럼<br>&BrandKey<br>고객충성도대상
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img src="/static/image/cart04.png" alt="" th:src="@{/image/cart04.png}">
-                <div class="award-detail">
-                    대한민국<br>퍼스트브랜드<br>대상
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img src="/static/image/cart05.png" alt="" th:src="@{/image/cart05.png}">
-                <div class="award-detail">
-                    고객사랑<br>브랜드<br>대상
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img id="award-customer-select" src="/static/image/cart06.png" alt="" th:src="@{/image/cart06.png}">
-                <div class="award-detail">
-                    소비자가뽑은<br>서비스 고객만족<br>대상
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img src="/static/image/cart07.png" alt="" th:src="@{/image/cart07.png}">
-                <div class="award-detail">
-                    한국브랜드<br>만족지수<br>1위
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img src="/static/image/cart08.png" alt="" th:src="@{/image/cart08.png}">
-                <div class="award-detail">
-                    한국프랜차이즈<br>산업통상자원부장관<br>표창
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img src="/static/image/cart10.png" alt="" th:src="@{/image/cart10.png}">
-                <div class="award-detail">
-                    한국프랜차이즈<br>국무총리<br>표창
-                </div>
-            </div>
-
-            <div class="award-list">
-                <img src="/static/image/cart11.png" alt="" th:src="@{/image/cart11.png}">
-                <div class="award-detail">
-                    2023<br>국가산업대상
-                </div>
-            </div>
-        </div><!--award-container-->
-    </div><!--award_main-->
-</section>
-
-
-<!--footer-->
-<footer id="footer" class="footer">
-    <div class="footer-first">
-        <div class="container">
-            <div class="footer-logo">
-                <img src="/static/image/the-venti-footer-logo.png" alt=""
-                     th:src="@{/image/the-venti-footer-logo.png}">
-            </div>
-            <div class="footer-category">
-                <a href="#">더벤티 소개</a>
-                <a href="#">고객상담</a>
-                <a href="#">개인정보 처리방침</a>
-                <a href="#">이용약관</a>
-            </div>
-            <div class="footer-sns">
-                <a href="#"><img src="/static/image/f_youtube.png" alt="" th:src="@{/image/f_youtube.png}"></a>
-                <a href="#"><img src="/static/image/f_insta.png" alt="" th:src="@{/image/f_insta.png}"></a>
-                <a href="#"><img src="/static/image/f_facebook.png" alt="" th:src="@{/image/f_facebook.png}"></a>
-                <a href="#"><img src="/static/image/f_blog.png" alt="" th:src="@{/image/f_blog.png}"></a>
+    <section class="special_tea_section">
+        <div class="special_tea">
+            <div data-aos="fade-down" data-aos-duration="1200">취향에 맞는<br>
+                <span class="special_tea_span">스페셜티 블렌드
+            <img src="/static/image/v-logo-icon-white.png" th:src="@{/image/v-logo-icon-white.png}" alt="">
+        </span>
             </div>
         </div>
-    </div>
-    <div class="footer-line"></div>
-    <div class="footer-second">
-        <div class="container">
-            <div class="footer-contact-tel">
-                <div>가맹문의 <a href="#">1661-4553</a></div>
-                <div>고객센터 <a href="#">1644-0513</a></div>
+
+        <!--3가지 맛-->
+        <div class="taste">
+            <div class="taste_of_coffee_mild">
+                <div class="coffee_content">
+                    <img th:src="@{/image/special-text.png}" src="/static/image/special-text.png" alt=""/>
+                    <div>마일드로스트</div>
+                </div>
+                <div>견과류의 깔끔하고 고소한 맛과 향</div>
+                <div class="coffee_line"></div>
+                <div class="coffee_taste">MEDIUM BODY<br>Nutty, Mapple Syrup</div>
+                <img src="/static/image/taste-graph1.png" th:src="@{/image/taste-graph1.png}" alt=""/>
             </div>
-            <div class="footer-address">
-                <div class="footer-busan">더벤티 부산&교육센터<span
-                        class="busan-detail">부산광역시 해운대구 센텀서로 30, 2507호(KNN타워)</span>
+
+            <!--마일드와 다크의 중간 작은 원두 이미지-->
+            <img id="special-logo" src="/static/image/special-logo-white.png" alt=""
+                 th:src="@{/image/special-logo-white.png}">
+
+            <div class="taste_of_coffee_dark">
+                <div class="coffee_content">
+                    <img id="dark_image" th:src="@{/image/special-text.png}" src="/static/image/special-text.png"
+                         alt=""/>
+                    <div>다크로스트</div>
                 </div>
-                <div class="footer-seoul">더벤티 서울&교육센터<span class="seoul-detail">서울특별시 구로구 디지털로33길 27 408~414호</span>
-                </div>
-                <div class="footer-company">
-                    <span>(주)에스앤씨세인</span>
-                    <span class="footer-company-number">사업자번호 : 534-88-00122</span>
-                    <span class="footer-company-people">대표이사 : 박수암 강삼남 최준경</span>
-                </div>
-                <div class="footer-copyright">
-                    Copyright &copy; THEVENTI. All right Reserved.
-                    <a href="#">Created By&nbsp;<span class="masstige">Masstige.</span></a>
-                </div>
+                <div>다크초콜릿의 깊고 진한 맛과 향</div>
+                <div class="coffee_line"></div>
+                <div class="coffee_taste">FULL BODY<br>Dark, Chocolate, Brouwn Sugar</div>
+                <img src="/static/image/taste-graph2.png" th:src="@{/image/taste-graph2.png}" alt=""/>
             </div>
-            <div class="footer-intro">
-                <a href="#">인트로&nbsp;
-                    <img th:src="@{/image/logo-icon.png}" src="/static/image/logo-icon.png" alt="">
-                </a>
+
+            <div class="taste_of_coffee_decaffeine">
+                <div class="coffee_content">
+                    <div>디카프로스트</div>
+                </div>
+                <div>카페인을 낮춘 깔끔한 맛과 향</div>
+                <div class="coffee_line"></div>
+                <div class="coffee_taste">Decaffeine BODY<br>Walnut, Cacao</div>
+                <img src="/static/image/taste-graph3.png" th:src="@{/image/taste-graph3.png}" alt=""/>
+            </div>
+        </div><!--taste--세가지 맛 나눈거-->
+    </section>
+
+    <!--the_venti_sns_swiper-->
+    <section class="sns-section">
+        <div class="sns-class" data-aos="fade-down" data-aos-duration="1000">
+            <div class="sns_title">THEVENTI SNS
+                <img th:src="@{/image/miniSymbol.png}" src="/static/image/miniSymbol.png" alt="">
             </div>
         </div>
+
+        <div class="the-venti-sns">
+            <div class="sns-swiper" data-aos="fade-up" data-aos-duration="1500">
+                <div class="swiper-container">
+                    <div class="swiper-paging-button"></div>
+                    <div class="swiper-pagination"></div>
+                    <button type="button" class="swiper-button swiper-button-prev"><i class="fa-solid fa-angle-left"></i></button>
+                    <button type="button" class="swiper-button swiper-button-next"><i class="fa-solid fa-angle-right"></i></button>
+                    <div class="swiper-wrapper">
+                        <!--swiper-slide-->
+                        <div class="swiper-slide sns-slide">
+                            <a href="#" class="the_venti_sns_circle">
+                                <img src="/static/image/berry-02.png" alt="" th:src="@{/image/berry-02.png}">
+                                <span class="sns_insta">
+                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
+                            </span>
+                            </a>
+                        </div>
+                        <div class="swiper-slide sns-slide">
+                            <a href="#" class="the_venti_sns_circle">
+                                <img src="/static/image/berry-01.jpg" alt="" th:src="@{/image/berry-01.jpg}">
+                                <span class="sns_insta">
+                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
+                            </span>
+                            </a>
+                        </div>
+                        <div class="swiper-slide sns-slide">
+                            <a href="#" class="the_venti_sns_circle">
+                                <img src="/static/image/diary.jpg" alt="" th:src="@{/image/diary.jpg}">
+                                <span class="sns_insta">
+                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
+                            </span>
+                            </a>
+                        </div>
+                        <div class="swiper-slide sns-slide">
+                            <a href="#" class="the_venti_sns_circle">
+                                <img src="/static/image/tumbler.jpg" alt="" th:src="@{/image/tumbler.jpg}">
+                                <span class="sns_insta">
+                                <img src="/static/image/insta-black.png" alt="" th:src="@{/image/insta-black.png}">
+                            </span>
+                            </a>
+                        </div>
+                    </div><!--swiper-wrapper-->
+                </div><!--swiper-container-->
+            </div><!--sns-swiper-->
+        </div><!--the-venti-sns-->
+    </section>
+
+    <div class="award-test">
     </div>
-</footer>
 
-<script>
-    const bestMenuSwiper = new Swiper('.best-menu-second .swiper-container', {
-        loop: true,
-        slidesPerView:5,
-        autoHeight:true,
-        clickable:true,
-            autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-            spaceBetween:20,
-        },
-        navigation:{
-            nextEl: '.best-menu-second .best-menu-button-next',
-            prevEl: '.best-menu-second .best-menu-button-prev',
-        },
-    });
+    <section class="award-section">
+        <div class="awardMain">
+            <div class="award-container">
+                <div class="award-list">
+                    <img src="/static/image/cart111.png" alt="" th:src="@{/image/cart111.png}">
+                    <div class="award-detail">
+                        제 24회 한국프랜차이즈<br>우수 프랜차이즈 부문<br>협회장 표창
+                    </div>
+                </div>
 
-    const snsSwiper = new Swiper('.the-venti-sns .swiper-container', {
-        loop:true,
-        slidesPerView:4,
-        autoHeight:true,
-        clickable:true,
-            autoplay: {
-            delay: 2000,
-            disableOnInteraction: false,
-            spaceBetween:30,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            type: "fraction",
-        },
-        navigation:{
-            nextEl: '.the-venti-sns .swiper-button-next',
-            prevEl: '.the-venti-sns .swiper-button-prev',
-        },
-    });
+                <div class="award-list">
+                    <img class="award-list-customer" src="/static/image/cart01.png" alt="" th:src="@{/image/cart01.png}">
+                    <div class="award-detail">
+                        국가소비자중심<br>브랜드대상
+                    </div>
+                </div>
 
-    AOS.init();
+                <div class="award-list">
+                    <img src="/static/image/cart02.png" alt="" th:src="@{/image/cart02.png}">
+                    <div class="award-detail">
+                        소비자가<br>신뢰하는<br>착한브랜드<br>대상
+                    </div>
+                </div>
 
-</script>
+                <div class="award-list">
+                    <img src="/static/image/cart03.png" alt="" th:src="@{/image/cart03.png}">
+                    <div class="award-detail">
+                        한국소비자포럼<br>&BrandKey<br>고객충성도대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart04.png" alt="" th:src="@{/image/cart04.png}">
+                    <div class="award-detail">
+                        대한민국<br>퍼스트브랜드<br>대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart05.png" alt="" th:src="@{/image/cart05.png}">
+                    <div class="award-detail">
+                        고객사랑<br>브랜드<br>대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img class="award-customer-select" src="/static/image/cart06.png" alt="" th:src="@{/image/cart06.png}">
+                    <div class="award-detail">
+                        소비자가뽑은<br>서비스 고객만족<br>대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart07.png" alt="" th:src="@{/image/cart07.png}">
+                    <div class="award-detail">
+                        한국브랜드<br>만족지수<br>1위
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart08.png" alt="" th:src="@{/image/cart08.png}">
+                    <div class="award-detail">
+                        한국프랜차이즈<br>산업통상자원부장관<br>표창
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart10.png" alt="" th:src="@{/image/cart10.png}">
+                    <div class="award-detail">
+                        한국프랜차이즈<br>국무총리<br>표창
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart11.png" alt="" th:src="@{/image/cart11.png}">
+                    <div class="award-detail">
+                        2023<br>국가산업대상
+                    </div>
+                </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
-<script src="https://kit.fontawesome.com/4e5b2f86bb.js" crossorigin="anonymous"></script>
+                <div class="award-list">
+                    <img src="/static/image/cart111.png" alt="" th:src="@{/image/cart111.png}">
+                    <div class="award-detail">
+                        제 24회 한국프랜차이즈<br>우수 프랜차이즈 부문<br>협회장 표창
+                    </div>
+                </div>
 
+                <div class="award-list">
+                    <img class="award-list-customer" src="/static/image/cart01.png" alt="" th:src="@{/image/cart01.png}">
+                    <div class="award-detail">
+                        국가소비자중심<br>브랜드대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart02.png" alt="" th:src="@{/image/cart02.png}">
+                    <div class="award-detail">
+                        소비자가<br>신뢰하는<br>착한브랜드<br>대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart03.png" alt="" th:src="@{/image/cart03.png}">
+                    <div class="award-detail">
+                        한국소비자포럼<br>&BrandKey<br>고객충성도대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart04.png" alt="" th:src="@{/image/cart04.png}">
+                    <div class="award-detail">
+                        대한민국<br>퍼스트브랜드<br>대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart05.png" alt="" th:src="@{/image/cart05.png}">
+                    <div class="award-detail">
+                        고객사랑<br>브랜드<br>대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img class="award-customer-select" src="/static/image/cart06.png" alt="" th:src="@{/image/cart06.png}">
+                    <div class="award-detail">
+                        소비자가뽑은<br>서비스 고객만족<br>대상
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart07.png" alt="" th:src="@{/image/cart07.png}">
+                    <div class="award-detail">
+                        한국브랜드<br>만족지수<br>1위
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart08.png" alt="" th:src="@{/image/cart08.png}">
+                    <div class="award-detail">
+                        한국프랜차이즈<br>산업통상자원부장관<br>표창
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart10.png" alt="" th:src="@{/image/cart10.png}">
+                    <div class="award-detail">
+                        한국프랜차이즈<br>국무총리<br>표창
+                    </div>
+                </div>
+
+                <div class="award-list">
+                    <img src="/static/image/cart11.png" alt="" th:src="@{/image/cart11.png}">
+                    <div class="award-detail">
+                        2023<br>국가산업대상
+                    </div>
+                </div>
+            </div><!--award-container-->
+
+        </div>
+    </section>
+</div><!--div layout :: fragment :: content-->
+
+<div layout:fragment="scriptFragment">
+    <script>
+        AOS.init();
+
+        const bestMenuSwiper = new Swiper('.best-menu-second .swiper-container', {
+            loop: true,
+            slidesPerView:5,
+            autoHeight:true,
+            clickable:true,
+                autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+                spaceBetween:20,
+            },
+            navigation:{
+                nextEl: '.best-menu-second .best-menu-button-next',
+                prevEl: '.best-menu-second .best-menu-button-prev',
+            },
+        });
+
+        const snsSwiper = new Swiper('.the-venti-sns .swiper-container', {
+            loop:true,
+            slidesPerView:4,
+            autoHeight:true,
+            clickable:true,
+                autoplay: {
+                delay: 2000,
+                disableOnInteraction: false,
+                spaceBetween:30,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                type: "fraction",
+            },
+            navigation:{
+                nextEl: '.the-venti-sns .swiper-button-next',
+                prevEl: '.the-venti-sns .swiper-button-prev',
+            },
+        });
+    </script>
+</div>
 </body>
-
 </html>

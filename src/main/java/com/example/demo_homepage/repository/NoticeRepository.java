@@ -13,6 +13,5 @@ public interface NoticeRepository extends JpaRepository<NoticeEntity, Long> {
     @Query(value = "select * from notice order by created_number desc", nativeQuery = true)
     List<NoticeEntity> findAllDesc();
 
-
 }
 

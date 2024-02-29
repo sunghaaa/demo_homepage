@@ -46,6 +46,7 @@ public class NoticeController {
         return "redirect:/notice";
     }
 
+    //상세 게시글 조회
     @GetMapping("/detailPageView/{createdNumber}")
     public String detailPageWriteView(Model model, @PathVariable("createdNumber") Long createdNumber) {
         List<String> categories = new ArrayList<>();
@@ -59,25 +60,32 @@ public class NoticeController {
         return "detailPageView";
     }
 
-    @DeleteMapping("/detailPageView/{createdNumber}")
-    public String deleteNoticePost(@PathVariable("createdNumber") Long createdNumber){
+    //게시글 삭제
+    @PostMapping("/detailPageView/{createdNumber}")
+    public String deleteNoticePost(@PathVariable("createdNumber") Long createdNumber) {
         noticeService.deleteNoticePost(createdNumber);
         return "redirect:/notice";
     }
 
     @GetMapping("/detailPageView/edit/{createdNumber}")
-    public String edit(@PathVariable("createdNumber") Long createdNumber, Model model) {
+    public String editGet(@PathVariable("createdNumber") Long createdNumber, Model model){
         NoticeDto noticeDto = noticeService.findById(createdNumber);
+        model.addAttribute("category");
         model.addAttribute("noticeDto", noticeDto);
         return "edit";
     }
 
-    @PutMapping("/detailPageView/edit/{createdNumber}")
-    public String editPut(@PathVariable("createdNumber") Long createdNumber, NoticeDto noticeDto) {
-        noticeDto.setCreatedNumber(createdNumber);
+    @PostMapping("/detailPageView/edit/{createdNumber}")
+    public String editPut(@PathVariable("createdNumber") Long createdNumber, NoticeDto editDto) {
+        NoticeDto noticeDto = noticeService.findById(createdNumber);
+        noticeDto.setCreatedNumber(editDto.getCreatedNumber());
+        noticeDto.setDetailTitle(editDto.getDetailTitle());
+        noticeDto.setMemberId(editDto.getMemberId());
+        noticeDto.setDetailContent(editDto.getDetailContent());
+        noticeDto.setCategory(editDto.getCategory());
+        noticeDto.setCreatedDate(editDto.getCreatedDate());
+
         noticeService.saveNoticePost(noticeDto);
-        System.out.println("수정된제목::" + noticeDto.getDetailTitle());
         return "redirect:/notice";
     }
-
 }
