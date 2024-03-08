@@ -63,7 +63,9 @@
         <label for="category"></label>
         <select class="select-category" id="category" name="category">
             <option value="">분류</option>
-            <option th:each="category : ${category}" th:value="${noticeDto.category}" th:text="${category}"></option>
+            <option th:each="category : ${category}" th:value="${category}" th:text="${category}"
+                    th:selected="${category == noticeDto.category}"></option>
+
         </select>
 
         <textarea name="detailContent" id="editor" th:text="${noticeDto.detailContent}"
@@ -89,16 +91,6 @@
         } );
 
 
-        document.querySelector( '#edit-button' ).addEventListener( 'click', () => {
-            const data = editor.getData();
-
-            alert(data);
-
-            document.querySelector('#edit-button').value = data;
-            document.querySelector('#edit-form').value =  'edit';
-            document.querySelector('#post-form').submit();
-
-        } );
     </script>
 </div>
 </body>

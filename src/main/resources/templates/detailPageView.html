@@ -56,15 +56,15 @@
             <label for="category"></label>
             <select class="select-category" id="category" name="category">
                 <option value="">분류</option>
-                <option th:each="category : ${category}" th:value="${noticeDto.category}"
-                        th:text="${category}"></option>
-            </select>
+                <option th:each="category : ${category}" th:value="${category}" th:text="${category}"
+                        th:selected="${category == noticeDto.category}"></option>
 
+            </select>
             <!--작성자 | 작성일-->
             <span class="writer_date">
-            <span th:text="${noticeDto.memberId}" th:field="*{memberId}"></span> |
-            <span th:text="${#temporals.format(noticeDto.createdDate,'yyyy.MM.dd')}" th:field="*{createdDate}"></span>
-        </span>
+                <span th:text="${noticeDto.memberId}" th:field="*{memberId}"></span> |
+                <span th:text="${#temporals.format(noticeDto.createdDate,'yyyy.MM.dd')}"></span>
+            </span>
 
             <!--detail_content-->
             <textarea id="editor" th:text="${noticeDto.detailContent}"></textarea>
@@ -73,19 +73,13 @@
 
             <button type="submit" id="delete-button">글삭제</button>
 
-            <form id="edit-form">
-                <button type="button" id="edit-button" th:value="edit"
-                        th:href="@{'/detailPageView/edit/' + ${noticeDto.createdNumber}}">
-                    글수정
-                </button>
-            </form>
-
             <a th:href="@{'/detailPageView/edit/' + ${noticeDto.createdNumber}}">
-                <button id="edit">글수정a태그</button>
+                <button type="button" id="edit-button">글수정</button>
             </a>
 
         </form>
-    </label>
+    </label><!--editor-end-->
+
 </div>
 
 <div layout:fragment="scriptFragment">
@@ -101,16 +95,6 @@
             console.error( error );
         } );
 
-
-        document.querySelector( '#edit-button' ).addEventListener( 'click', () => {
-            const data = editor.getData();
-
-            alert(data);
-
-            document.querySelector('#edit-button').value = data;
-            document.querySelector('#post-form').submit();
-
-        } );
     </script>
 </div>
 </body>

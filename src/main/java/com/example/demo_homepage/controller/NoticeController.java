@@ -2,6 +2,9 @@ package com.example.demo_homepage.controller;
 
 import com.example.demo_homepage.dto.NoticeDto;
 import com.example.demo_homepage.service.NoticeService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +21,33 @@ public class NoticeController {
         this.noticeService = noticeService;
     }
 
-    @GetMapping("/notice")
-    public String noticeList(Model model) {
+    @GetMapping("/notice_")
+    public String noticeList_(Model model) {
         List<NoticeDto> noticeList = noticeService.findAllDesc();
         model.addAttribute("noticeList", noticeList);
+        return "notice";
+    }
+
+    @GetMapping("/notice")
+    public String noticeList(@PageableDefault(page = 1) Pageable pageable, Model model) {
+        Page<NoticeDto> noticeDtoPage = noticeService.paging(pageable);
+
+        int pageLimit = 10;
+        //int startPage = ((pageable.getPageNumber() / pageLimit) - 1) * pageLimit + 1;
+        int startPage = (((int) (Math.ceil((double) pageable.getPageNumber() / pageLimit))) - 1) * pageLimit + 1;
+        int totalPages = noticeDtoPage.getTotalPages();
+        int endPage;
+
+        if ((startPage + pageLimit - 1) < totalPages) {
+            endPage = startPage + pageLimit - 1;
+        } else {
+            endPage = totalPages;
+        }
+
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("noticeList", noticeDtoPage);
+
         return "notice";
     }
 
@@ -67,11 +93,20 @@ public class NoticeController {
         return "redirect:/notice";
     }
 
+    //게시글 수정
     @GetMapping("/detailPageView/edit/{createdNumber}")
-    public String editGet(@PathVariable("createdNumber") Long createdNumber, Model model){
+    public String editGet(@PathVariable("createdNumber") Long createdNumber, Model model) {
         NoticeDto noticeDto = noticeService.findById(createdNumber);
-        model.addAttribute("category");
+
+        List<String> categories = new ArrayList<>();
+        categories.add("소식");
+        categories.add("뉴스");
+        categories.add("이벤트");
+        categories.add("발표");
+
+        model.addAttribute("category", categories);
         model.addAttribute("noticeDto", noticeDto);
+
         return "edit";
     }
 

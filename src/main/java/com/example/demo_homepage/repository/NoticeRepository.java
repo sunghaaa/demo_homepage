@@ -1,6 +1,8 @@
 package com.example.demo_homepage.repository;
 
 import com.example.demo_homepage.entity.NoticeEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

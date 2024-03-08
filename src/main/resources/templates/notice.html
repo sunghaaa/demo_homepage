@@ -86,23 +86,44 @@
                             <li th:text="${#temporals.format(notice.createdDate,'yyyy.MM.dd')}"></li>
                         </ul>
                     </li>
-                </ul>
+                </ul><!--ulBoard-->
             </li><!--noticeBoardList-->
-
-            <li>
-                <div id="divPaging">
-                    <div><a href="#"><i class="fa fa-angle-double-left"></i></a></div>
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
-                    <div>4</div>
-                    <div>5</div>
-                    <div><a href="#"><i class="fa fa-angle-double-right"></i></a></div>
-                </div>
-            </li>
         </ul>
+    </div><!--noticeBoard-end-->
 
-    </div><!--noticeBoard-->
+    <div class="paging-area">
+        <ul class="paging">
+            <li class="page-item">
+                <a class="page-link" th:href="@{/notice(page=1)}">
+                    <span><i class="fa-solid fa-angles-left"></i></span>
+                </a>
+            </li>
+
+            <li th:class="${noticeList.first } ? 'disabled'" class="page-item">
+                <a class="page-link" th:href="${noticeList.first} ? '#' : @{/notice(page=${noticeList.number})}">
+                    <span><i class="fa-solid fa-angle-left"></i> </span>
+                </a>
+            </li>
+
+            <li th:each="page: ${#numbers.sequence(startPage, endPage)}"
+                th:class="${page == noticeList.number +1} ? 'page-item active' " class="page-item">
+                <a class="page-link" th:text="${page}" th:href="@{/notice(page=${page})}"></a>
+            </li>
+
+            <li th:class="${noticeList.last} ? 'disabled'">
+                <a class="page-link" th:href="${noticeList.last} ? '#' : @{/notice(page=${noticeList.number + 2})}">
+                    <span><i class="fa-solid fa-angle-right"></i> </span>
+                </a>
+            </li>
+
+            <li class="page-item">
+                <a class="page-link" th:href="@{/notice(page=${noticeList.totalPages})}">
+                    <span><i class="fa-solid fa-angles-right"></i> </span>
+                </a>
+            </li>
+
+        </ul>
+    </div><!--paging-area-end-->
 
     <div class="searchForm-line"></div>
 
